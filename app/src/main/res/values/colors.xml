@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="ace_orange">#FFFA6400</color>
+    <color name="ace_orange_variant">#FFFB8500</color>
+    <color name="ace_background">#FFEAEAEA</color>
+    <color name="ace_secondary_variant">#FF464646</color>
+    <color name="ace_secondary_variant_2">#FF888888</color>
+    <color name="ace_error">#FFF11B00</color>
+    <color name="ace_on_surface">#FF1B1B1B</color>
 </resources>

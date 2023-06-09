@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "543798335492",
+    "project_id": "ace-mobile-app-38a54",
+    "storage_bucket": "ace-mobile-app-38a54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543798335492:android:168ac38b398b02a1b87d51",
+        "android_client_info": {
+          "package_name": "com.kingelias.ace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543798335492-gafg8ji05a2e4277c3tbvv8i11bot6ac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kingelias.ace",
+            "certificate_hash": "2e4b04e6f3e691ab81c2f665d0444daef76184ad"
+          }
+        },
+        {
+          "client_id": "543798335492-9q2ekc81c6pb8f8m5v0kbv9tt46lfjvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJbs-b79P7aZ-cQZ-AEKEPVdoHwGylPkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543798335492-9q2ekc81c6pb8f8m5v0kbv9tt46lfjvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
