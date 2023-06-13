@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Ace.NoAppBar" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Ace" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/ace_orange</item>
         <item name="colorPrimaryVariant">@color/ace_orange_variant</item>
@@ -14,17 +14,15 @@
     </style>
 
     <!--    Splash Screen Theme for Light Mode-->
-    <style name="Theme.Ace.SplashScreen" parent="Theme.SplashScreen">
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ace_logo</item>
-        <item name="windowSplashScreenAnimationDuration">400</item>
-        <item name="postSplashScreenTheme">@style/Base.Theme.Ace.NoAppBar</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="postSplashScreenTheme">@style/Theme.Ace</item>
 
         <!-- Status bar and Nav bar configs -->
-        <item name="android:statusBarColor" >@color/black</item>
-        <item name="android:navigationBarColor">@color/black</item>
-        <item name="android:windowLightStatusBar" >false</item>
+        <item name="android:statusBarColor" >@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
-
-    <style name="Theme.Ace" parent="Base.Theme.Ace.NoAppBar" />
 </resources>
