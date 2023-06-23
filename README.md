@@ -1,3 +1,4 @@
+![Screenshot](https://github.com/KingElias-1/Ace/blob/master/app/src/main/res/drawable/ace_logo.png)
 # What is Ace?
 Ace is an Online marketplace in a Mobile App.
 
