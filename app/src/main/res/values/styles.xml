@@ -49,7 +49,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="button_settings" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="button_settings" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_height">70dp</item>
         <item name="iconSize">30dp</item>
         <item name="iconTint">@color/ace_secondary_variant</item>

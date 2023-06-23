@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.setupWithNavController
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kingelias.ace.R
 import com.kingelias.ace.databinding.ActivityMainBinding
 import com.kingelias.ace.fragments.HomeFragment
+import com.kingelias.ace.fragments.HomeFragmentDirections
 import com.kingelias.ace.fragments.NewAdFragment
 import com.kingelias.ace.fragments.SettingsFragment
 import com.kingelias.ace.fragments.WishlistFragment
@@ -62,7 +64,9 @@ class MainActivity : AppCompatActivity() {
         mainBinding.bottomNavBar.setItemSelected(R.id.homeFragment)
         mainBinding.bottomNavBar.setOnItemSelectedListener {
             when(it){
-                R.id.homeFragment -> {replaceFragment(HomeFragment())}
+                R.id.homeFragment -> {when(navController.currentDestination!!.id == R.id.homeFragment){
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNewAdFragment())
+                }}
                 R.id.wishlistFragment -> {replaceFragment(WishlistFragment())}
                 R.id.newAdFragment -> {replaceFragment(NewAdFragment())}
                 R.id.settingsFragment -> {replaceFragment(SettingsFragment())}

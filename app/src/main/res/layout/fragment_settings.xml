@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/my_ads"
                     android:fontFamily="@font/avenir_black"
-                    app:icon="@drawable/user_edit"/>
+                    app:icon="@drawable/trend"/>
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
