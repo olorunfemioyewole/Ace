@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="ace_orange">#FFFA6400</color>
     <color name="ace_orange_variant">#FFFB8500</color>

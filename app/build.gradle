@@ -50,7 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // Splash Screen API Dependency
-    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
 
     // viewPager2 dependency
     implementation "androidx.viewpager2:viewpager2:1.0.0"
@@ -66,14 +66,25 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 
     // Glide dependencies
-    implementation 'com.github.bumptech.glide:glide:4.14.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+
+    // dexter   dependency for camera
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+
+    //chip navigation bar dependency
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
+
+    //dependency for the Google Play services library
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
     // firebase dependencies
-    implementation platform ('com.google.firebase:firebase-bom:31.1.0')
+    implementation platform ('com.google.firebase:firebase-bom:32.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-database:20.2.2'
     implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
-    implementation 'com.google.firebase:firebase-storage:20.2.0'
+    implementation 'com.google.firebase:firebase-storage:20.2.1'
 }

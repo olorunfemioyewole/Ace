@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "543798335492",
+    "firebase_url": "https://ace-mobile-app-38a54-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "ace-mobile-app-38a54",
     "storage_bucket": "ace-mobile-app-38a54.appspot.com"
   },
@@ -22,7 +23,7 @@
           }
         },
         {
-          "client_id": "543798335492-9q2ekc81c6pb8f8m5v0kbv9tt46lfjvh.apps.googleusercontent.com",
+          "client_id": "543798335492-q1i0k2l49hq4eih48mo3bfgc34cd7qr7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

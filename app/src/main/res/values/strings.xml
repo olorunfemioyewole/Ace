@@ -5,4 +5,35 @@
     <string name="skip">Skip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_pic">Choose a Profile picture</string>
+    <string name="first_name">First name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Sign Up</string>
+    <string name="already_have_an_account_login">Already have an account? <font color="#FA6400">Login</font></string>
+    <string name="phone_number">Phone</string>
+    <string name="email">Email</string>
+    <string name="last_name">Last name</string>
+    <string name="or">OR</string>
+    <string name="signup_google">Signup with Google</string>
+    <string name="dont_have_an_accont_signup">Don\'t have an account? <font color="#FA6400">Signup</font></string>
+    <string name="login">Login</string>
+    <string name="login_google">Login with Google</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="ok">Ok</string>
+    <string name="err_msg_field">Please, fill this field to continue</string>
+    <string name="err_msg_email">Please, enter your email to continue</string>
+    <string name="err_msg_invalid_email">Invalid Email</string>
+    <string name="err_msg_pass">Please, enter a password to continue</string>
+    <string name="err_msg_pass_short">Your password must be at least 6 characters long</string>
+    <string name="err_msg_pass_match">The passwords do not match</string>
+    <string name="home">Home</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="new_ad">New Ad</string>
+    <string name="settings">Settings</string>
+    <string name="login_email_link">Get Email Link</string>
+    <string name="forgot_password">Forgot your Password?</string>
+    <string name="resend_verification">Resend Email Verification link</string>
 </resources>

@@ -11,6 +11,10 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/ace_secondary_variant</item>
+
+        <item name="errorTextColor">@color/ace_error</item>
+        <item name="boxStrokeErrorColor">@color/ace_error</item>
+        <item name="errorIconTint">@color/ace_error</item>
     </style>
 
     <!--    Splash Screen Theme for Dark Mode-->

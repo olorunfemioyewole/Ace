@@ -1,14 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SignupFragment">
+    android:scrollbars="none"
+    android:orientation="vertical"
+    tools:context=".fragments.SignUpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
+            app:layout_constraintVertical_chainStyle="spread_inside">
 
-</FrameLayout>
+
+            <ImageView
+                android:id="@+id/logoIV"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/ace_logo"
+                android:padding="0dp"
+                android:src="@drawable/ace_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profile_pic_frameCV"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/ace_secondary_variant"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoIV">
+
+                <ImageView
+                    android:id="@+id/profile_picIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/profile_pic"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/add_profile_picIV"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/profile_pic"
+                    android:src="@drawable/user"
+                    app:tint="@color/white" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/pfp_promptTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_book"
+                android:text="@string/profile_pic"
+                android:textColor="@color/ace_orange"
+                android:textSize="15sp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_pic_frameCV"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/first_nameTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="@string/first_name"
+                style="@style/outlined_til"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pfp_promptTV">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    style="@style/outlined_tiet"
+                    android:fontFamily="@font/avenir_book"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/last_nameTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="3dp"
+                android:hint="@string/last_name"
+                style="@style/outlined_til"
+                app:boxBackgroundColor="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_nameTIL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/last_nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    style="@style/outlined_tiet"
+                    android:fontFamily="@font/avenir_book"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Spinner
+                android:id="@+id/genderSP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:paddingVertical="20dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/last_nameTIL" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailTIL_"
+                style="@style/outlined_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/email"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/genderSP">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailET_"
+                    style="@style/outlined_tiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="3dp"
+                android:hint="@string/phone_number"
+                style="@style/outlined_til"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailTIL_">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    style="@style/outlined_tiet"
+                    android:fontFamily="@font/avenir_book"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--password editText-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordTIL_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="3dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/ace_orange"
+                style="@style/outlined_til"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneTIL">
+                <!--password editText-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordET_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    style="@style/outlined_tiet"
+                    android:fontFamily="@font/avenir_book"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--password editText-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirm_passwordTIL_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="3dp"
+                style="@style/outlined_til"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordTIL_"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/ace_orange">
+                <!--password editText-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirm_passwordET_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    style="@style/outlined_tiet"
+                    android:fontFamily="@font/avenir_book"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--login button-->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signupBn"
+                android:layout_width="match_parent"
+                style="@style/button_primary"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/register"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_passwordTIL_"
+                android:fontFamily="@font/avenir_black" />
+
+            <!--signUp prompt-->
+            <TextView
+                android:id="@+id/login_promptTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_book"
+                android:text="@string/already_have_an_account_login"
+                android:textSize="13sp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signupBn"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="5dp"/>
+
+            <TextView
+                android:id="@+id/orTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/avenir_black"
+                android:text="@string/or"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_promptTV"
+                android:paddingHorizontal="5dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/google_signupBn"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                app:icon="@drawable/google_logo"
+                android:text="@string/signup_google"
+                style="@style/button_secondary"
+                android:fontFamily="@font/avenir_black"
+                app:layout_constraintTop_toBottomOf="@+id/orTV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
