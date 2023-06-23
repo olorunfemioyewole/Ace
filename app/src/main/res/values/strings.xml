@@ -36,4 +36,14 @@
     <string name="login_email_link">Get Email Link</string>
     <string name="forgot_password">Forgot your Password?</string>
     <string name="resend_verification">Resend Email Verification link</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="business_details">Business Details</string>
+    <string name="change_email">Change Email</string>
+    <string name="my_ads">My Ads</string>
+    <string name="my_feedback">My Feedback</string>
+    <string name="give_feedback">Give Feedback</string>
+    <string name="about_us">About Us</string>
+    <string name="delete_my_account">Delete My Account</string>
+    <string name="logout">Log out</string>
+    <string name="change_password">Change Password</string>
 </resources>

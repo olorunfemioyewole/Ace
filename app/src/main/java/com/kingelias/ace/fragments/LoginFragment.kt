@@ -3,7 +3,9 @@ package com.kingelias.ace.fragments
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,8 +23,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.actionCodeSettings
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData
+import com.google.firebase.dynamiclinks.ktx.dynamicLinks
+import com.google.firebase.ktx.Firebase
 import com.kingelias.ace.R
 import com.kingelias.ace.activities.MainActivity
 import com.kingelias.ace.databinding.FragmentLoginBinding
@@ -40,6 +47,8 @@ class LoginFragment : Fragment() {
     private var email = ""
     private var password = ""
 
+    private lateinit var actionCodeSettings: ActionCodeSettings
+
     //progress dialog
     private lateinit var loggingInDialog: ProgressDialog
 
@@ -47,6 +56,20 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
+
+        /*actionCodeSettings = actionCodeSettings {
+            // URL you want to redirect back to. The domain (www.example.com) for this
+            // URL must be whitelisted in the Firebase Console.
+            url = "https://aceapp.page.link/password-less-signin"
+            // This must be true
+            handleCodeInApp = true
+            setIOSBundleId("com.kingelias.ace")
+            setAndroidPackageName(
+                "com.kingelias.ace",
+                true, // installIfNotAvailable
+                "12", // minimumVersion
+            )
+        }*/
 
         //checking is user is logged in before creating view
         checkUser()
@@ -92,6 +115,35 @@ class LoginFragment : Fragment() {
             loggingInDialog.show()
             launchSignInWithGoogle()
         }
+
+        //handling Email link sign in
+        /*loginBinding.mailLinkBn.setOnClickListener {
+            email = emailET.text.toString().trim()
+
+            if (email.isEmpty()){
+                loginBinding.emailTIL.isErrorEnabled = true;
+                loginBinding.emailTIL.error = getString(R.string.err_msg_email);
+            }
+            else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+
+                loginBinding.emailTIL.isErrorEnabled = true;
+                loginBinding.emailTIL.error = getString(R.string.err_msg_invalid_email);
+            }else{
+                auth.sendSignInLinkToEmail(email, actionCodeSettings)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            AlertDialog.Builder(requireActivity()).also{
+                                it.setTitle("Check your email")
+                                it.setMessage("Sign in link sent to $email")
+                                it.setPositiveButton(getString(R.string.ok)){ _, _ ->
+                                }
+                            }.create().show()
+                        }
+                    }
+            }
+
+        }*/
+
 
         //handling sending email verification link
         loginBinding.resendEmailVerBn.setOnClickListener{
