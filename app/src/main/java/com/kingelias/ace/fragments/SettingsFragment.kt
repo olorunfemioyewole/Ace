@@ -1,5 +1,6 @@
 package com.kingelias.ace.fragments
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,13 +21,22 @@ class SettingsFragment : Fragment() {
     private var auth = FirebaseAuth.getInstance()
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    //progress dialog
+    private lateinit var logoutInDialog: ProgressDialog
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         settingsBinding = FragmentSettingsBinding.inflate(inflater, container, false)
 
+        logoutInDialog = ProgressDialog(requireActivity())
+        logoutInDialog.setTitle("Please wait")
+        logoutInDialog.setMessage("Logging you out...")
+        logoutInDialog.setCanceledOnTouchOutside(false)
+
         settingsBinding.logoutBn.setOnClickListener {
+            logoutInDialog.show()
             handleLogout()
         }
 
@@ -35,13 +45,15 @@ class SettingsFragment : Fragment() {
 
     fun handleLogout() {
         //logging out
-        auth.signOut()
         signOutFromGoogle()
+        auth.signOut()
 
         val firebaseUser = auth.currentUser
         if (firebaseUser != null) {
             //user still logged in
+            logoutInDialog.dismiss()
         } else {
+            logoutInDialog.dismiss()
             startActivity(Intent(requireContext(), AuthActivity::class.java))
         }
     }

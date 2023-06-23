@@ -50,7 +50,6 @@
     </style>
 
     <style name="button_settings" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_height">70dp</item>
         <item name="iconSize">30dp</item>
         <item name="iconTint">@color/ace_secondary_variant</item>
