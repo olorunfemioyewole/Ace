@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kingelias.ace.R
 import com.kingelias.ace.activities.AuthActivity
 import com.kingelias.ace.databinding.FragmentSettingsBinding
+
 
 class SettingsFragment : Fragment() {
     private lateinit var settingsBinding: FragmentSettingsBinding
@@ -69,5 +71,5 @@ class SettingsFragment : Fragment() {
         //revoking google Sign in token
         googleSignInClient.revokeAccess()
     }
-
+    
 }

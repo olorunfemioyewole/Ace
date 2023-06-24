@@ -1,29 +1,23 @@
 package com.kingelias.ace.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Toast
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.ui.setupWithNavController
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.google.firebase.auth.FirebaseAuth
 import com.kingelias.ace.R
 import com.kingelias.ace.databinding.ActivityMainBinding
-import com.kingelias.ace.fragments.HomeFragment
 import com.kingelias.ace.fragments.HomeFragmentDirections
-import com.kingelias.ace.fragments.NewAdFragment
-import com.kingelias.ace.fragments.SettingsFragment
-import com.kingelias.ace.fragments.WishlistFragment
+import com.kingelias.ace.fragments.NewAdFragmentDirections
+import com.kingelias.ace.fragments.SettingsFragmentDirections
+import com.kingelias.ace.fragments.WishlistFragmentDirections
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
@@ -64,16 +58,67 @@ class MainActivity : AppCompatActivity() {
         mainBinding.bottomNavBar.setItemSelected(R.id.homeFragment)
         mainBinding.bottomNavBar.setOnItemSelectedListener {
             when(it){
-                R.id.homeFragment -> {when(navController.currentDestination!!.id == R.id.homeFragment){
-                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNewAdFragment())
-                }}
-                R.id.wishlistFragment -> {replaceFragment(WishlistFragment())}
-                R.id.newAdFragment -> {replaceFragment(NewAdFragment())}
-                R.id.settingsFragment -> {replaceFragment(SettingsFragment())}
+                R.id.homeFragment -> navToHome()
+                R.id.wishlistFragment -> navToWishlist()
+                R.id.newAdFragment -> navToNewAd()
+                R.id.settingsFragment -> navToSettings()
                 else ->{}
             }
         }
 
+    }
+
+    private fun navToHome() {
+        when (navController.currentDestination?.id){
+            R.id.newAdFragment -> {
+                val action = NewAdFragmentDirections.actionNewAdFragmentToHomeFragment()
+                navController.navigate(action) }
+            R.id.wishlistFragment -> {
+                val action = WishlistFragmentDirections.actionWishlistFragmentToHomeFragment()
+                navController.navigate(action) }
+            R.id.settingsFragment -> {
+                val action = SettingsFragmentDirections.actionSettingsFragmentToHomeFragment()
+                navController.navigate(action) }
+        }
+    }
+    private fun navToWishlist() {
+        when (navController.currentDestination?.id){
+            R.id.homeFragment -> {
+                val action = HomeFragmentDirections.actionHomeFragmentToWishlistFragment()
+                navController.navigate(action) }
+            R.id.newAdFragment -> {
+                val action = NewAdFragmentDirections.actionNewAdFragmentToWishlistFragment()
+                navController.navigate(action) }
+            R.id.settingsFragment -> {
+                val action = SettingsFragmentDirections.actionSettingsFragmentToWishlistFragment()
+                navController.navigate(action) }
+        }
+    }
+    private fun navToNewAd() {
+        when (navController.currentDestination?.id){
+            R.id.homeFragment -> {
+                val action = HomeFragmentDirections.actionHomeFragmentToNewAdFragment()
+                navController.navigate(action) }
+            R.id.wishlistFragment -> {
+                val action = WishlistFragmentDirections.actionWishlistFragmentToNewAdFragment()
+                navController.navigate(action) }
+            R.id.settingsFragment -> {
+                val action = SettingsFragmentDirections.actionSettingsFragmentToNewAdFragment()
+                navController.navigate(action) }
+        }
+    }
+    private fun navToSettings() {
+        when (navController.currentDestination?.id){
+            R.id.homeFragment -> {
+                val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+                navController.navigate(action) }
+            R.id.wishlistFragment -> {
+                val action = WishlistFragmentDirections.actionWishlistFragmentToSettingsFragment()
+                navController.navigate(action) }
+            R.id.newAdFragment -> {
+                val action = NewAdFragmentDirections.actionNewAdFragmentToSettingsFragment()
+                navController.navigate(action) }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean { //Setup appBarConfiguration for back arrow
@@ -84,13 +129,28 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> showBottomNavigation()
-                R.id.wishlistFragment -> showBottomNavigation()
-                R.id.newAdFragment -> showBottomNavigation()
+                R.id.homeFragment -> {showBottomNavigation()
+                                        hideAppBar()}
+                R.id.wishlistFragment -> {showBottomNavigation()
+                                        showAppBar()}
+                R.id.newAdFragment -> {showBottomNavigation()
+                                        showAppBar()}
+                R.id.settingsFragment -> {showBottomNavigation()
+                                        showAppBar()}
                 else -> hideBottomNavigation()
             }
         }
 
+    }
+
+    private fun hideAppBar() {
+        val appBar = mainBinding.mainAppbar
+        appBar.visibility = View.GONE
+    }
+
+    private fun showAppBar() {
+        val appBar = mainBinding.mainAppbar
+        appBar.visibility = View.VISIBLE
     }
 
     private fun hideBottomNavigation() {

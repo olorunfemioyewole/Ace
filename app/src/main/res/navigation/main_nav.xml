@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.kingelias.ace.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_wishlistFragment"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/wishlistFragment"
         android:name="com.kingelias.ace.fragments.WishlistFragment"
-        android:label="fragment_wishlist"
+        android:label="Wishlist"
         tools:layout="@layout/fragment_wishlist" >
         <action
             android:id="@+id/action_wishlistFragment_to_homeFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/newAdFragment"
         android:name="com.kingelias.ace.fragments.NewAdFragment"
-        android:label="fragment_new_ad"
+        android:label="New Ad"
         tools:layout="@layout/fragment_new_ad" >
         <action
             android:id="@+id/action_newAdFragment_to_wishlistFragment"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.kingelias.ace.fragments.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_newAdFragment"
