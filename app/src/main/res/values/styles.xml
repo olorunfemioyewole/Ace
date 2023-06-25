@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="profile_round">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
     <style name="bottom_nav_text">
         <item name="android:fontFamily">@font/avenir_black</item>
         <item name="android:textColor">@color/white</item>

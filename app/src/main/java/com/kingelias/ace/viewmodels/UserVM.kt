@@ -7,14 +7,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.kingelias.ace.data.User
 import com.kingelias.ace.utils.Constants.NODE_PROFILE_PIC
 import com.kingelias.ace.utils.Constants.NODE_USERS
 
 class UserVM: ViewModel() {
-    val auth = FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     //database nodes
     private val database = FirebaseDatabase.getInstance()
@@ -55,7 +58,7 @@ class UserVM: ViewModel() {
     fun uploadProfilePicture(selectedImage: Uri, userID: String) {
         val fileName = "${userID}.jpg"
         val imageRef = cstProfilePicRef.child(fileName)
-        var imageUrl = ""
+        var imageUrl: String
 
         val uploadTask = imageRef.putFile(selectedImage)
         uploadTask.addOnSuccessListener { taskSnapshot ->
@@ -80,6 +83,52 @@ class UserVM: ViewModel() {
                 _result.value = it
             }
 
+    }
+
+    fun updateUserField(userID: String, fieldName: String, value: Any) {
+        dbUsers.child(userID).child(fieldName).setValue(value)
+            .addOnSuccessListener {
+                _result.value = null
+            }
+            .addOnFailureListener{
+                _result.value = it
+            }
+    }
+
+    fun getUser(){
+        auth.currentUser?.let {
+            dbUsers.child(it.uid).addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        val user = snapshot.getValue(User::class.java)
+                        user?.id = snapshot.key
+                        _user.value = user!!
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+    }
+
+    fun deleteUser() {
+        val userID = auth.currentUser?.uid
+        auth.currentUser?.delete()
+            ?.addOnSuccessListener {
+                FirebaseAuth.getInstance().signOut()
+                if (userID != null) {
+                    dbUsers.child(userID).setValue(null)
+                        .addOnSuccessListener {
+                            cstProfilePicRef.child("$userID.jpg").delete()
+                        }
+                        .addOnFailureListener{
+                            _result.value = it
+                        }
+                }
+            }
+            ?.addOnFailureListener{
+                _result.value = it
+            }
     }
 
 }

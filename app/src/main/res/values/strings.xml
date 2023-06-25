@@ -46,4 +46,7 @@
     <string name="delete_my_account">Delete My Account</string>
     <string name="logout">Log out</string>
     <string name="change_password">Change Password</string>
+    <string name="save">Save Changes</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
 </resources>

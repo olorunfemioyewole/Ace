@@ -57,20 +57,6 @@ class LoginFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
 
-        /*actionCodeSettings = actionCodeSettings {
-            // URL you want to redirect back to. The domain (www.example.com) for this
-            // URL must be whitelisted in the Firebase Console.
-            url = "https://aceapp.page.link/password-less-signin"
-            // This must be true
-            handleCodeInApp = true
-            setIOSBundleId("com.kingelias.ace")
-            setAndroidPackageName(
-                "com.kingelias.ace",
-                true, // installIfNotAvailable
-                "12", // minimumVersion
-            )
-        }*/
-
         //checking is user is logged in before creating view
         checkUser()
     }

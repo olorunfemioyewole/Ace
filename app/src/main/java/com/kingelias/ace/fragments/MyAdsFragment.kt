@@ -6,21 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kingelias.ace.R
-import com.kingelias.ace.databinding.FragmentNewAdBinding
+import com.kingelias.ace.databinding.FragmentMyAdsBinding
 
 
-class NewAdFragment : Fragment() {
-    private lateinit var newAdBinding: FragmentNewAdBinding
+class MyAdsFragment : Fragment() {
+    private lateinit var myAdsBindng: FragmentMyAdsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        newAdBinding = FragmentNewAdBinding.inflate(inflater, container, false)
+    ): View {
+        myAdsBindng = FragmentMyAdsBinding.inflate(inflater, container, false)
 
 
 
-        return newAdBinding.root
+        return myAdsBindng.root
     }
 
 }

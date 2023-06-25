@@ -1,5 +1,6 @@
 package com.kingelias.ace.utils
 
+import android.graphics.Region
 import com.kingelias.ace.R
 import com.kingelias.ace.data.OnboardItem
 
@@ -19,6 +20,19 @@ object Constants {
         "Male",
         "Female",
         "Prefer not to say"
+    )
+
+    val regions: List<String> = listOf(
+        "Greater Accra Region",
+        "Central Region",
+        "Ashanti Region",
+        "Western Region",
+        "Eastern Region",
+        "Volta Region",
+        "Brong-Ahafo Region",
+        "Northern Region",
+        "Upper West Region",
+        "Upper East Region"
     )
 
     //request codes
