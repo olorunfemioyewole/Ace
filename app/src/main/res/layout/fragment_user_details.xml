@@ -7,9 +7,11 @@
     tools:context=".fragments.UserDetailsFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/personal_detailsCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,20 +21,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingVertical="20dp">
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingHorizontal="10dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/profile_pic_frameCV"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logoIV">
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:id="@+id/profile_pic_frameCV"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logoIV">
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profile_picIV"
                         android:layout_width="match_parent"
@@ -40,35 +41,34 @@
                         android:contentDescription="@string/profile_pic"
                         android:scaleType="centerCrop"
                         android:background="@color/ace_secondary_variant"
-                        style="@style/profile_round"/>
+                        app:shapeAppearanceOverlay="@style/profile_round"/>
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/add_profile_picIV"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="bottom|end"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
                         android:contentDescription="@string/profile_pic"
                         android:background="@color/ace_orange"
-                        style="@style/profile_round"
-                        android:padding="2dp"
+                        app:shapeAppearanceOverlay="@style/profile_round"
+                        android:scaleType="centerInside"
                         android:src="@drawable/edit"
                         app:tint="@color/white" />
                 </FrameLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/first_nameTIL"
                 style="@style/outlined_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
                 android:hint="@string/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/first_nameET"
-                    style="@style/outlined_tiet"
+                    style="@style/outlined_tiet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
@@ -80,13 +80,12 @@
                 style="@style/outlined_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="3dp"
                 android:hint="@string/last_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/last_nameET"
-                    style="@style/outlined_tiet"
+                    style="@style/outlined_tiet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
@@ -98,22 +97,20 @@
                 android:id="@+id/genderSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="5dp"
-                android:paddingVertical="20dp"/>
+                android:paddingVertical="17dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTIL_"
                 style="@style/outlined_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="3dp"
                 android:hint="@string/phone_number">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailET_"
-                    style="@style/outlined_tiet"
+                    style="@style/outlined_tiet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
@@ -121,11 +118,114 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signupBn"
+                android:id="@+id/save_p_changesBn"
                 android:layout_width="match_parent"
-                style="@style/button_primary"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="50dp"
+                style="@style/button_primary2"
+                android:layout_marginTop="30dp"
+                android:text="@string/save"
+                android:fontFamily="@font/avenir_black" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/business_detailsCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:paddingHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/business_nameTIL"
+                style="@style/outlined_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/business_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/business_nameET"
+                    style="@style/outlined_tiet2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descriptionTIL"
+                style="@style/outlined_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:hint="@string/description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionET"
+                    style="@style/outlined_tiet2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:inputType="textLongMessage" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressTIL"
+                style="@style/outlined_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:hint="@string/address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addressET"
+                    style="@style/outlined_tiet2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:inputType="textLongMessage" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical"
+                android:layout_marginTop="3dp">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/use_addressCB"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
+
+                <TextView
+                    android:id="@+id/pfp_promptTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:text="@string/profile_pic"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_b_changesBn"
+                android:layout_width="match_parent"
+                style="@style/button_primary2"
+                android:layout_marginTop="30dp"
                 android:text="@string/save"
                 android:fontFamily="@font/avenir_black" />
         </LinearLayout>

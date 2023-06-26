@@ -70,6 +70,14 @@ class SettingsFragment : Fragment() {
             findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToUserDetailsFragment(user, true))
         }
 
+        settingsBinding.myAdsBn.setOnClickListener {
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyAdsFragment())
+        }
+
+        settingsBinding.myFeedbackBN.setOnClickListener {
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyFeedbackFragment())
+        }
+
         settingsBinding.aboutUsBn.setOnClickListener {
             findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToAboutFragment())
         }
@@ -89,6 +97,7 @@ class SettingsFragment : Fragment() {
                 }
                 it.setPositiveButton(getString(R.string.yes)){ _, _ ->
                     usersVM.deleteUser()
+                    startActivity(Intent(requireContext(), AuthActivity::class.java))
                 }
             }.create().show()
         }

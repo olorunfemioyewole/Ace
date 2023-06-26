@@ -49,4 +49,15 @@
     <string name="save">Save Changes</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
+    <string name="business_name">Business Name</string>
+    <string name="description">Description</string>
+    <string name="address">Address</string>
+    <string name="ace_android_app">ACE Android App</string>
+    <string name="app_desc">Discover, Sell and Connect on our online market place.\nFind what you need, sell your products, and connect with trusted vendors.</string>
+    <string name="developed_by">Developed by:</string>
+    <string name="developers">Olorunfemi Elias Oyewole\nAfari Amo Jedidiah\nShadrack Odametey</string>
+    <string name="final_project">as part of Our Final Project</string>
+    <string name="my_mail">eliasikechi14@gmail.com</string>
+    <string name="for_more_info">For more info, please contact:</string>
+    <string name="sample_review">It was a successful purchase, but the delivery took longer than expected</string>
 </resources>

@@ -27,6 +27,9 @@ class UserVM: ViewModel() {
     private val storage = FirebaseStorage.getInstance()
     private val cstProfilePicRef = storage.reference.child(NODE_PROFILE_PIC)
 
+    lateinit var userToEdit: User
+    var businessDetails: Boolean = false
+
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user

@@ -7,6 +7,7 @@ import com.kingelias.ace.data.OnboardItem
 object Constants {
     //firebase nodes
     const val NODE_USERS = "users"
+    const val NODE_FEEDBACK = "feedback"
     const val NODE_PROFILE_PIC = "profile_pic"
 
     val onboardItems: List<OnboardItem> = listOf(
@@ -20,6 +21,14 @@ object Constants {
         "Male",
         "Female",
         "Prefer not to say"
+    )
+
+    val dealOutcomes: List<String> = listOf(
+        "How did it go?",
+        "Successful Purchase",
+        "The deal failed",
+        "Couldn't agree on price",
+        "Couldn't reach the seller"
     )
 
     val regions: List<String> = listOf(

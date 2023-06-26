@@ -73,11 +73,17 @@
         <action
             android:id="@+id/action_settingsFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_myAdsFragment"
+            app:destination="@id/myAdsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_myFeedbackFragment"
+            app:destination="@id/myFeedbackFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.kingelias.ace.fragments.UserDetailsFragment"
-        android:label="fragment_user_details"
+        android:label="Personal Details"
         tools:layout="@layout/fragment_user_details" >
         <argument
             android:name="user"
@@ -92,10 +98,28 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.kingelias.ace.fragments.AboutFragment"
-        android:label="fragment_about"
+        android:label="About Us"
         tools:layout="@layout/fragment_about" >
         <action
             android:id="@+id/action_aboutFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAdsFragment"
+        android:name="com.kingelias.ace.fragments.MyAdsFragment"
+        android:label="My Ads"
+        tools:layout="@layout/fragment_my_ads" >
+        <action
+            android:id="@+id/action_myAdsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFeedbackFragment"
+        android:name="com.kingelias.ace.fragments.MyFeedbackFragment"
+        android:label="fragment_my_feedback"
+        tools:layout="@layout/fragment_my_feedback" >
+        <action
+            android:id="@+id/action_myFeedbackFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
 </navigation>
