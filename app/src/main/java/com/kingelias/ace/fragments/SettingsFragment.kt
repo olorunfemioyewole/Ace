@@ -9,9 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -37,6 +34,7 @@ class SettingsFragment : Fragment() {
     private val usersVM by lazy {
         ViewModelProvider(this)[UserVM::class.java]
     }
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +48,9 @@ class SettingsFragment : Fragment() {
         logoutInDialog.setCanceledOnTouchOutside(false)
 
         usersVM.getUser()
+        usersVM.user.observe(viewLifecycleOwner){
+            user = it
+        }
 
         usersVM.result.observe(viewLifecycleOwner){ exception ->
             Toast.makeText(requireContext(), exception?.message.toString(), Toast.LENGTH_LONG).show()
@@ -61,13 +62,11 @@ class SettingsFragment : Fragment() {
         }
 
         settingsBinding.personalDetailsBn.setOnClickListener {
-            val user = User()
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToUserDetailsFragment(user, false))
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToUserDetailsFragment(false))
         }
 
         settingsBinding.businessDetailsBn.setOnClickListener {
-            val user = User()
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToUserDetailsFragment(user, true))
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToUserDetailsFragment( true))
         }
 
         settingsBinding.myAdsBn.setOnClickListener {
@@ -75,7 +74,7 @@ class SettingsFragment : Fragment() {
         }
 
         settingsBinding.myFeedbackBN.setOnClickListener {
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyFeedbackFragment())
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyFeedbackFragment( true))
         }
 
         settingsBinding.aboutUsBn.setOnClickListener {

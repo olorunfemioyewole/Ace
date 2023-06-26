@@ -31,6 +31,12 @@ object Constants {
         "Couldn't reach the seller"
     )
 
+    val businessTypes: List<String> = listOf(
+        "Business Type",
+        "Online Vendor",
+        "Physical Store"
+    )
+
     val regions: List<String> = listOf(
         "Greater Accra Region",
         "Central Region",

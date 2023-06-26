@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MyFeedbackFragment">
+    tools:context=".fragments.FeedbackFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -13,22 +13,23 @@
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="15dp"
         app:cardCornerRadius="15dp"
+        android:paddingBottom="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="7dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/pfpSIV"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="15dp"
                 android:layout_marginVertical="10dp"
+                android:layout_marginStart="15dp"
                 android:background="@color/ace_orange"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/profile_round" />
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
                     android:textColor="@color/ace_orange"
-                    android:text="Online Vendor"
+                    android:text=""
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
                     app:layout_constraintStart_toEndOf="@+id/pfpSIV"
@@ -61,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_black"
                     android:textColor="@color/black"
-                    android:text="Business Name"
+                    android:text=""
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
                     app:layout_constraintStart_toEndOf="@+id/pfpSIV"
@@ -78,18 +79,19 @@
                         android:id="@+id/ratingBar"
                         style="?android:attr/ratingBarStyleIndicator"
                         android:scaleX=".6"
-                        android:rating="4.5"
+                        android:rating="0"
                         android:scaleY=".6"
                         android:transformPivotX="0dp"
                         android:transformPivotY="0dp"
                         android:max="5"
                         android:progressTint="@color/ace_orange" />
                     <TextView
+                        android:id="@+id/rating_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/avenir_book"
                         android:textSize="14sp"
-                        android:text="4.5 (2 reviews)"
+                        android:text=""
                         android:textColor="@color/ace_orange"
                         android:layout_marginStart="120dp"
                         android:layout_marginTop="3dp"/>
@@ -97,12 +99,23 @@
 
             </LinearLayout>
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/button_primary"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/avenir_black"
+                android:text="@string/leave_feedback"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pfpSIV"
+                android:visibility="gone"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feedbackRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"

@@ -1,8 +1,6 @@
 package com.kingelias.ace.viewmodels
 
-import android.content.Context
 import android.net.Uri
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,6 +39,10 @@ class UserVM: ViewModel() {
     private val _result = MutableLiveData<Exception?>()
     val result: LiveData<Exception?>
         get() = _result
+
+    val _ready = MutableLiveData<Boolean>()
+    val ready: LiveData<Boolean>
+        get() = _ready
 
     private val _imgUploadComplete = MutableLiveData<Boolean>()
     val imgUploadComplete: LiveData<Boolean>
@@ -106,6 +108,7 @@ class UserVM: ViewModel() {
                         val user = snapshot.getValue(User::class.java)
                         user?.id = snapshot.key
                         _user.value = user!!
+                        _ready.value = true
                     }
                 }
 

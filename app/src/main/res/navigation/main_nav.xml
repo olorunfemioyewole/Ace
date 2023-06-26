@@ -86,9 +86,6 @@
         android:label="Personal Details"
         tools:layout="@layout/fragment_user_details" >
         <argument
-            android:name="user"
-            app:argType="com.kingelias.ace.data.User" />
-        <argument
             android:name="businessDetails"
             app:argType="boolean" />
         <action
@@ -115,11 +112,14 @@
     </fragment>
     <fragment
         android:id="@+id/myFeedbackFragment"
-        android:name="com.kingelias.ace.fragments.MyFeedbackFragment"
-        android:label="fragment_my_feedback"
+        android:name="com.kingelias.ace.fragments.FeedbackFragment"
+        android:label="My Feedback"
         tools:layout="@layout/fragment_my_feedback" >
         <action
             android:id="@+id/action_myFeedbackFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <argument
+            android:name="myFeedback"
+            app:argType="boolean" />
     </fragment>
 </navigation>

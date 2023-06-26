@@ -101,7 +101,7 @@
                 android:paddingVertical="17dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailTIL_"
+                android:id="@+id/phoneTIL_"
                 style="@style/outlined_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 android:hint="@string/phone_number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailET_"
+                    android:id="@+id/phoneET_"
                     style="@style/outlined_tiet2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -209,14 +209,15 @@
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/use_addressCB"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:buttonTint="@color/ace_orange"/>
 
                 <TextView
                     android:id="@+id/pfp_promptTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
-                    android:text="@string/profile_pic"
+                    android:text="@string/use_business_details"
                     android:textSize="15sp"/>
 
             </LinearLayout>

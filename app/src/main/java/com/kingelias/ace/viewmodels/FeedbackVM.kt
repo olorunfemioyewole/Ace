@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.kingelias.ace.data.User
+import com.google.firebase.database.ValueEventListener
+import com.kingelias.ace.data.Feedback
 import com.kingelias.ace.utils.Constants
 
 class FeedbackVM: ViewModel() {
@@ -16,11 +19,32 @@ class FeedbackVM: ViewModel() {
     private val database = FirebaseDatabase.getInstance()
     private val dbFeedback = database.reference.child(Constants.NODE_FEEDBACK)
 
-    private val _feedback = MutableLiveData<User>()
-    val feedback: LiveData<User>
+    private val _feedback = MutableLiveData<List<Feedback>>()
+    val feedback: LiveData<List<Feedback>>
         get() = _feedback
 
-    private val _result = MutableLiveData<Exception?>()
+    private var _result = MutableLiveData<Exception?>()
     val result: LiveData<Exception?>
         get() = _result
+
+    fun fetchMyFeedback(userId: String){
+        dbFeedback.orderByChild("receiver_id").equalTo(userId).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val feedbackList = mutableListOf<Feedback>()
+
+                    for (feedbackSnapshot in snapshot.children){
+                        val feedbackItem = feedbackSnapshot.getValue(Feedback::class.java)
+                        feedbackItem?.id = feedbackSnapshot.key
+
+                        feedbackItem?.let {feedbackList.add(it)}
+                    }
+
+                    _feedback.value = feedbackList
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
 }

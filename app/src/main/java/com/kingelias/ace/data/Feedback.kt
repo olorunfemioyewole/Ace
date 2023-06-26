@@ -5,10 +5,11 @@ import com.google.firebase.database.Exclude
 data class Feedback(
     @get: Exclude
     var id: String? = null,
-    var senderId: String? = "",
-    var senderPfp: String? = "",
-    var receiverId: String? = "",
-    var rating: Int? = 1,
+    var sender_name: String? = "",
+    var sender_id: String? = "",
+    var sender_pfp: String? = "",
+    var receiver_id: String? = "",
+    var rating: Int? = 5,
     var dealOutcome: String? = "",
     var comment: String? = ""
 ) {
@@ -19,9 +20,10 @@ data class Feedback(
         other as Feedback
 
         if (id != other.id) return false
-        if (senderId != other.senderId) return false
-        if (senderPfp != other.senderPfp) return false
-        if (receiverId != other.receiverId) return false
+        if (sender_name != other.sender_name) return false
+        if (sender_id != other.sender_id) return false
+        if (sender_pfp != other.sender_pfp) return false
+        if (receiver_id != other.receiver_id) return false
         if (rating != other.rating) return false
         if (dealOutcome != other.dealOutcome) return false
         if (comment != other.comment) return false
@@ -31,9 +33,10 @@ data class Feedback(
 
     override fun hashCode(): Int {
         var result = id?.hashCode() ?: 0
-        result = 31 * result + (senderId?.hashCode() ?: 0)
-        result = 31 * result + (senderPfp?.hashCode() ?: 0)
-        result = 31 * result + (receiverId?.hashCode() ?: 0)
+        result = 31 * result + (sender_name?.hashCode() ?: 0)
+        result = 31 * result + (sender_id?.hashCode() ?: 0)
+        result = 31 * result + (sender_pfp?.hashCode() ?: 0)
+        result = 31 * result + (receiver_id?.hashCode() ?: 0)
         result = 31 * result + (rating ?: 0)
         result = 31 * result + (dealOutcome?.hashCode() ?: 0)
         result = 31 * result + (comment?.hashCode() ?: 0)

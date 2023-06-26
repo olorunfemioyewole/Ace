@@ -143,6 +143,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun changeLabel(label: String){
+        navController.currentDestination!!.label = label
+    }
+
     private fun hideAppBar() {
         val appBar = mainBinding.mainAppbar
         appBar.visibility = View.GONE

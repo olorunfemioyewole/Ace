@@ -60,4 +60,6 @@
     <string name="my_mail">eliasikechi14@gmail.com</string>
     <string name="for_more_info">For more info, please contact:</string>
     <string name="sample_review">It was a successful purchase, but the delivery took longer than expected</string>
+    <string name="leave_feedback">Leave Feedback</string>
+    <string name="use_business_details">Use Business details on your Ads</string>
 </resources>

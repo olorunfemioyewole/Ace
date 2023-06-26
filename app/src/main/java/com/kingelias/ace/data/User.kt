@@ -18,10 +18,11 @@ data class User(
     val location: String? = "Greater Accra",
 
     //Business details
-    var businessName: String? = null,
-    var businessDescription: String? = null,
-    var businessAddress: String? = null,
-    var useAddress: Boolean? = false
+    var business_name: String? = null,
+    var business_description: String? = null,
+    var business_address: String? = null,
+    var business_type: String? = "Online Vendor",
+    var use_address: Boolean? = false
 ): Parcelable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -37,10 +38,11 @@ data class User(
         if (email != other.email) return false
         if (phone != other.phone) return false
         if (location != other.location) return false
-        if (businessName != other.businessName) return false
-        if (businessDescription != other.businessDescription) return false
-        if (businessAddress != other.businessAddress) return false
-        if (useAddress != other.useAddress) return false
+        if (business_name != other.business_name) return false
+        if (business_description != other.business_description) return false
+        if (business_address != other.business_address) return false
+        if (business_type != other.business_type) return false
+        if (use_address != other.use_address) return false
 
         return true
     }
@@ -54,10 +56,11 @@ data class User(
         result = 31 * result + (email?.hashCode() ?: 0)
         result = 31 * result + (phone?.hashCode() ?: 0)
         result = 31 * result + (location?.hashCode() ?: 0)
-        result = 31 * result + (businessName?.hashCode() ?: 0)
-        result = 31 * result + (businessDescription?.hashCode() ?: 0)
-        result = 31 * result + (businessAddress?.hashCode() ?: 0)
-        result = 31 * result + (useAddress?.hashCode() ?: 0)
+        result = 31 * result + (business_name?.hashCode() ?: 0)
+        result = 31 * result + (business_description?.hashCode() ?: 0)
+        result = 31 * result + (business_address?.hashCode() ?: 0)
+        result = 31 * result + (business_type?.hashCode() ?: 0)
+        result = 31 * result + (use_address?.hashCode() ?: 0)
         return result
     }
 }

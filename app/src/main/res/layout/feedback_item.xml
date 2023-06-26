@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/pfpSIV"
+            android:id="@+id/sender_pfpSIV"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
@@ -28,11 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/avenir_black"
-            android:text="User Name"
+            android:text=""
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
-            app:layout_constraintStart_toEndOf="@+id/pfpSIV"
-            app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+            app:layout_constraintBottom_toBottomOf="@+id/sender_pfpSIV"
+            app:layout_constraintStart_toEndOf="@+id/sender_pfpSIV"
+            app:layout_constraintTop_toTopOf="@+id/sender_pfpSIV" />
 
         <TextView
             android:id="@+id/ratingTV"
@@ -40,12 +40,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/avenir_black"
-            android:text="4⭐"
+            android:text=""
             android:textColor="@color/ace_orange"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+            app:layout_constraintBottom_toBottomOf="@+id/sender_pfpSIV"
             app:layout_constraintStart_toEndOf="@+id/usernameTV"
-            app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+            app:layout_constraintTop_toTopOf="@+id/sender_pfpSIV" />
 
         <TextView
             android:id="@+id/reviewTV"
@@ -61,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pfpSIV" />
+            app:layout_constraintTop_toBottomOf="@+id/sender_pfpSIV" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
