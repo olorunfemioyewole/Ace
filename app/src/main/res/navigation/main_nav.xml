@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_subcategoryFragment"
             app:destination="@id/subcategoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
@@ -128,7 +131,7 @@
     <fragment
         android:id="@+id/subcategoryFragment"
         android:name="com.kingelias.ace.fragments.SubcategoryFragment"
-        android:label="fragment_subcategory"
+        android:label="Select Subcategory"
         tools:layout="@layout/fragment_subcategory" >
         <action
             android:id="@+id/action_subcategoryFragment_to_homeFragment"
@@ -136,5 +139,30 @@
         <argument
             android:name="category"
             app:argType="com.kingelias.ace.data.Category" />
+        <action
+            android:id="@+id/action_subcategoryFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.kingelias.ace.fragments.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" >
+        <action
+            android:id="@+id/action_searchResultFragment_to_subcategoryFragment"
+            app:destination="@id/subcategoryFragment" />
+        <argument
+            android:name="subcategory"
+            app:argType="com.kingelias.ace.data.Subcategory"
+            app:nullable="true" />
+        <argument
+            android:name="search"
+            app:argType="boolean"
+            android:defaultValue="true" />
+        <argument
+            android:name="searchQuery"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="blank" />
     </fragment>
 </navigation>

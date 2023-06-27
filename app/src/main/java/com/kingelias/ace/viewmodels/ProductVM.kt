@@ -71,7 +71,6 @@ class ProductVM: ViewModel() {
     fun fetchSubCategories(){
         dbSubCategories.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                _ready.value = false
                 if (snapshot.exists()){
                     val fashionSubcategories = mutableListOf<Subcategory>()
                     val electronicsSubcategories = mutableListOf<Subcategory>()

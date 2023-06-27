@@ -137,7 +137,8 @@ class MainActivity : AppCompatActivity() {
                                         showAppBar()}
                 R.id.settingsFragment -> {showBottomNavigation()
                                         showAppBar()}
-                else -> hideBottomNavigation()
+                else -> {showAppBar()
+                    hideBottomNavigation()}
             }
         }
 
