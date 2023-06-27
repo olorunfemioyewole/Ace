@@ -12,7 +12,6 @@ import com.kingelias.ace.data.Feedback
 import com.kingelias.ace.utils.Constants
 
 class FeedbackVM: ViewModel() {
-
     private val auth = FirebaseAuth.getInstance()
 
     //database nodes

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_subcategoryFragment"
+            app:destination="@id/subcategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
@@ -121,5 +124,17 @@
         <argument
             android:name="myFeedback"
             app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/subcategoryFragment"
+        android:name="com.kingelias.ace.fragments.SubcategoryFragment"
+        android:label="fragment_subcategory"
+        tools:layout="@layout/fragment_subcategory" >
+        <action
+            android:id="@+id/action_subcategoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.kingelias.ace.data.Category" />
     </fragment>
 </navigation>

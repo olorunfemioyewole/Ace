@@ -2,6 +2,7 @@ package com.kingelias.ace.utils
 
 import android.graphics.Region
 import com.kingelias.ace.R
+import com.kingelias.ace.data.Category
 import com.kingelias.ace.data.OnboardItem
 
 object Constants {
@@ -9,6 +10,10 @@ object Constants {
     const val NODE_USERS = "users"
     const val NODE_FEEDBACK = "feedback"
     const val NODE_PROFILE_PIC = "profile_pic"
+    const val NODE_PRODUCTS = "product"
+    const val NODE_CATEGORY = "category"
+    const val NODE_SUBCATEGORY = "subcategory"
+    const val NODE_PRODUCT_TYPES = "product_type"
 
     val onboardItems: List<OnboardItem> = listOf(
         OnboardItem("Discover", "A wide range of products tailored to your needs!", R.drawable.onboard_1),
@@ -21,6 +26,13 @@ object Constants {
         "Male",
         "Female",
         "Prefer not to say"
+    )
+
+    val condition: List<String> = listOf(
+        "Condition",
+        "Any",
+        "Brand New",
+        "Used"
     )
 
     val dealOutcomes: List<String> = listOf(

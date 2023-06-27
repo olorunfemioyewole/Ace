@@ -62,4 +62,6 @@
     <string name="sample_review">It was a successful purchase, but the delivery took longer than expected</string>
     <string name="leave_feedback">Leave Feedback</string>
     <string name="use_business_details">Use Business details on your Ads</string>
+    <string name="category_1">Category 1</string>
+    <string name="categories">Categories</string>
 </resources>
