@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SearchResultFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/relLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="15dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back_arrow"
+            android:src="@drawable/back"
+            android:scaleType="centerInside"
+            app:tint="@color/ace_secondary_variant" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            style="@style/SearchViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/searchview_bg"
+            android:searchIcon="@null"/>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filterSV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/relLayout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/locationBn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:paddingHorizontal="20dp"
+                style="@style/button_primary"
+                android:textSize="15sp"
+                android:layout_marginEnd="10dp"
+                app:cornerRadius="10dp"
+                android:text="@string/location"
+                android:fontFamily="@font/avenir_book" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/priceBn"
+                android:layout_width="wrap_content"
+                style="@style/button_filter"
+                android:text="@string/price"
+                android:fontFamily="@font/avenir_book"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/catBn"
+                android:layout_width="wrap_content"
+                style="@style/button_filter"
+                android:text="@string/category"
+                android:fontFamily="@font/avenir_book"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/subcatBn"
+                android:layout_width="wrap_content"
+                style="@style/button_filter"
+                android:text="@string/subcategory"
+                android:fontFamily="@font/avenir_book"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/no_resultTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/avenir_book"
+        android:text="@string/no_result"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resultsRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterSV"
+        tools:itemCount="4"
+        tools:listitem="@layout/product_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

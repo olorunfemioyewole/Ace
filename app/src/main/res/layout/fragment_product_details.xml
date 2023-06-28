@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragments.ProductDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/product_headerCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/image_VP"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        android:overScrollMode="never" />
+
+                    <ImageButton
+                        android:id="@+id/wishlistIBn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@color/transparent"
+                        android:src="@drawable/save_inactive"
+                        app:tint="@color/ace_orange"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="end"
+                        android:contentDescription="@string/add_to_wishlist" />
+
+                    <LinearLayout
+                        android:id="@+id/imageIndicatorsLL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center_horizontal|bottom" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/conditionTV"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="10dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/location"
+                        app:tint="@color/ace_secondary_variant_2"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@string/location_icon" />
+
+                    <TextView
+                        android:id="@+id/locationTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_black"
+                        android:text="@string/location_sample"
+                        android:textColor="@color/ace_secondary_variant_2"
+                        android:textSize="13sp"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/priceTV" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/titleTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:fontFamily="@font/avenir_black"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/conditionTV"
+                    android:layout_marginTop="10dp"
+                    android:gravity="bottom"
+                    android:layout_marginStart="10dp">
+                    <TextView
+                        android:id="@+id/priceTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:fontFamily="@font/avenir_black"
+                        android:textColor="@color/ace_orange"
+                        android:textSize="22sp"/>
+                    <TextView
+                        android:id="@+id/negotiableTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:fontFamily="@font/avenir_book"
+                        android:textColor="@color/ace_orange"
+                        android:textSize="15sp"
+                        android:layout_marginHorizontal="8dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/conditionTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/searchview_bg"
+                    android:fontFamily="@font/avenir_book"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/brand_new"
+                    android:textColor="@color/ace_secondary_variant"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/priceTV" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callBn"
+                    android:layout_width="match_parent"
+                    style="@style/button_primary"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/call_now"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_passwordTIL_"
+                    android:fontFamily="@font/avenir_black" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/specsCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_headerCV">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/specsRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/specs_item"
+                tools:itemCount="4"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/descCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/specsCV">
+            <TextView
+                android:id="@+id/descTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:fontFamily="@font/avenir_book"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="15dp"
+                android:textSize="15sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sellerCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="15dp"
+            android:paddingBottom="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descCV">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="7dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/pfpSIV"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/ace_orange"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/profile_round" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                    app:layout_constraintTop_toTopOf="@+id/pfpSIV">
+
+                    <TextView
+                        android:id="@+id/vendor_typeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:textColor="@color/ace_orange"
+                        android:text=""
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                        app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                        app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+
+                    <TextView
+                        android:id="@+id/vendor_nameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_black"
+                        android:textColor="@color/black"
+                        android:text=""
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                        app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                        app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:id="@+id/ratingBar"
+                            style="?android:attr/ratingBarStyleIndicator"
+                            android:scaleX=".6"
+                            android:rating="0"
+                            android:scaleY=".6"
+                            android:transformPivotX="0dp"
+                            android:transformPivotY="0dp"
+                            android:max="5"
+                            android:progressTint="@color/ace_orange" />
+                        <TextView
+                            android:id="@+id/rating_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/avenir_book"
+                            android:textSize="14sp"
+                            android:text=""
+                            android:textColor="@color/ace_orange"
+                            android:layout_marginStart="120dp"
+                            android:layout_marginTop="3dp"/>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pfpSIV">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/view_FeedBn"
+                        style="@style/button_tertiary"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        android:textColor="@color/ace_orange"
+                        android:fontFamily="@font/avenir_black"
+                        android:text="@string/view_feedback"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/view_vendorBn"
+                        style="@style/button_tertiary"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/ace_orange"
+                        android:fontFamily="@font/avenir_black"
+                        android:text="@string/view_Vendor"/>
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

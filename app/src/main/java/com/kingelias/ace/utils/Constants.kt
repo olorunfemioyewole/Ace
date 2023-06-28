@@ -14,6 +14,8 @@ object Constants {
     const val NODE_CATEGORY = "category"
     const val NODE_SUBCATEGORY = "subcategory"
     const val NODE_PRODUCT_TYPES = "product_type"
+    const val NODE_PRODUCT = "product"
+    const val NODE_PRODUCT_IMAGE = "product_image"
 
     val onboardItems: List<OnboardItem> = listOf(
         OnboardItem("Discover", "A wide range of products tailored to your needs!", R.drawable.onboard_1),

@@ -12,7 +12,6 @@ import com.kingelias.ace.adapters.CategoryAdapter
 import com.kingelias.ace.data.Category
 import com.kingelias.ace.databinding.FragmentHomeBinding
 import com.kingelias.ace.viewmodels.ProductVM
-import com.kingelias.ace.viewmodels.UserVM
 
 
 class HomeFragment : Fragment() {
@@ -39,7 +38,25 @@ class HomeFragment : Fragment() {
             categoryAdapter.setCategories(categories)
         }
 
+        homeBinding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                performSearch(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                // Perform any filtering or suggestions as the user types (optional)
+                return true
+            }
+
+        })
+
         return homeBinding.root
+    }
+
+    private fun performSearch(query: String) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(null, true, query))
     }
 
     fun goToSubcategories(category: Category) {

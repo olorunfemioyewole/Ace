@@ -32,6 +32,10 @@ class UserVM: ViewModel() {
     val user: LiveData<User>
         get() = _user
 
+    private val _seller = MutableLiveData<User>()
+    val seller: LiveData<User>
+        get() = _seller
+
     private val _userImg = MutableLiveData<Uri>()
     val userImg: LiveData<Uri>
         get() = _userImg
@@ -115,6 +119,20 @@ class UserVM: ViewModel() {
                 override fun onCancelled(error: DatabaseError) {}
             })
         }
+    }
+
+    fun getSeller(userID: String){
+        dbUsers.child(userID).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val user = snapshot.getValue(User::class.java)
+                    user?.id = snapshot.key
+                    _seller.value = user!!
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     fun deleteUser() {

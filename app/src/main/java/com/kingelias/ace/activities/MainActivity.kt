@@ -137,6 +137,8 @@ class MainActivity : AppCompatActivity() {
                                         showAppBar()}
                 R.id.settingsFragment -> {showBottomNavigation()
                                         showAppBar()}
+                R.id.searchResultFragment -> {hideBottomNavigation()
+                                        hideAppBar()}
                 else -> {showAppBar()
                     hideBottomNavigation()}
             }
@@ -191,7 +193,7 @@ class MainActivity : AppCompatActivity() {
             }
             //if the selected menu item is not dashboard, perform normal back action
             navController.currentDestination!!.id != R.id.homeFragment -> {
-                super.onBackPressed()
+                navController.navigateUp()
             }
             //when back button is pressed once, doubleBackToExitPressedOnce is set to true
             else -> {

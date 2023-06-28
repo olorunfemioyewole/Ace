@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_wishlistFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_wishlistFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newAdFragment"
@@ -58,6 +61,9 @@
         <action
             android:id="@+id/action_newAdFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_newAdFragment_to_myAdsFragment"
+            app:destination="@id/myAdsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -115,6 +121,9 @@
         <action
             android:id="@+id/action_myAdsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_myAdsFragment_to_newAdFragment"
+            app:destination="@id/newAdFragment" />
     </fragment>
     <fragment
         android:id="@+id/myFeedbackFragment"
@@ -127,6 +136,9 @@
         <argument
             android:name="myFeedback"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_myFeedbackFragment_to_vendorDetailsFragment"
+            app:destination="@id/vendorDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/subcategoryFragment"
@@ -164,5 +176,38 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="blank" />
+        <action
+            android:id="@+id/action_searchResultFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.kingelias.ace.fragments.ProductDetailsFragment"
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_wishlistFragment"
+            app:destination="@id/wishlistFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.kingelias.ace.data.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_vendorDetailsFragment"
+            app:destination="@id/vendorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vendorDetailsFragment"
+        android:name="com.kingelias.ace.fragments.VendorDetailsFragment"
+        android:label="fragment_vendor_details"
+        tools:layout="@layout/fragment_vendor_details" >
+        <action
+            android:id="@+id/action_vendorDetailsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_vendorDetailsFragment_to_myFeedbackFragment"
+            app:destination="@id/myFeedbackFragment" />
     </fragment>
 </navigation>
