@@ -1,6 +1,7 @@
 package com.kingelias.ace.viewmodels
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +12,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.kingelias.ace.data.User
+import com.kingelias.ace.utils.Constants
 import com.kingelias.ace.utils.Constants.NODE_PROFILE_PIC
 import com.kingelias.ace.utils.Constants.NODE_USERS
+import com.kingelias.ace.utils.Constants.NODE_WISHLIST
+import com.kingelias.ace.utils.Constants.NODE_WISHLISTERS
 
 class UserVM: ViewModel() {
     private val auth = FirebaseAuth.getInstance()
@@ -20,6 +24,7 @@ class UserVM: ViewModel() {
     //database nodes
     private val database = FirebaseDatabase.getInstance()
     private val dbUsers = database.reference.child(NODE_USERS)
+    private val dbProducts = database.reference.child(Constants.NODE_PRODUCTS)
 
     //storage nodes
     private val storage = FirebaseStorage.getInstance()
@@ -106,7 +111,7 @@ class UserVM: ViewModel() {
 
     fun getUser(){
         auth.currentUser?.let {
-            dbUsers.child(it.uid).addListenerForSingleValueEvent(object: ValueEventListener {
+            dbUsers.child(it.uid).addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
                         val user = snapshot.getValue(User::class.java)
@@ -115,8 +120,8 @@ class UserVM: ViewModel() {
                         val wishlist = mutableListOf<String>()
                         for (item in snapshot.child("wishlisted").children){
                             wishlist.add(item.key.toString())
+                            user?.wishlist = wishlist
                         }
-                        user?.wishlist = wishlist
 
                         _user.value = user!!
                         _ready.value = true
@@ -159,6 +164,20 @@ class UserVM: ViewModel() {
             }
             ?.addOnFailureListener{
                 _result.value = it
+            }
+    }
+
+    fun wishlist(productId: String) {
+        dbUsers.child(auth.currentUser!!.uid).child(NODE_WISHLIST).child(productId).setValue(true)
+            .addOnSuccessListener {
+                dbProducts.child(productId).child(NODE_WISHLISTERS).child(auth.currentUser!!.uid).setValue(true)
+            }
+    }
+
+    fun unWishlist(productId: String) {
+        dbUsers.child(auth.currentUser!!.uid).child(NODE_WISHLIST).child(productId).setValue(null)
+            .addOnSuccessListener {
+                dbProducts.child(productId).child(NODE_WISHLISTERS).child(auth.currentUser!!.uid).setValue(null)
             }
     }
 

@@ -53,6 +53,15 @@ class WishlistFragment : Fragment() {
         return wishlistBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        userVM.getUser()
+        userVM.user.observe(viewLifecycleOwner){
+            it.wishlist?.let { it1 -> productVM.fetchWishlist(it1) }
+        }
+    }
+
     fun goToDetails(product: Product) {
         findNavController().navigate(WishlistFragmentDirections.actionWishlistFragmentToProductDetailsFragment(product))
     }

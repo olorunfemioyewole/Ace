@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -65,6 +67,27 @@ class ProductDetailsFragment : Fragment() {
         productDeetBinding.specsRV.layoutManager = GridLayoutManager(requireActivity(),2)
         productDeetBinding.specsRV.adapter = specsAdapter
 
+        userVM.getUser()
+        userVM.user.observe(viewLifecycleOwner){
+            setWishlistIndicator(it)
+        }
+
+        productDeetBinding.wishlistIBn.setOnClickListener{
+            val user = userVM.user.value
+
+            if (user != null) {
+                if (user.wishlist?.contains(productVM.currentProduct.id.toString()) == true){
+                    userVM.unWishlist(productVM.currentProduct.id.toString())
+
+                    userVM.getUser()
+                }else{
+                    userVM.wishlist(productVM.currentProduct.id.toString())
+
+                    userVM.getUser()
+                }
+            }
+        }
+
         //inflating image viewPager
         productDeetBinding.imageVP.adapter = imageAdapter
         setupIndicators()
@@ -86,6 +109,16 @@ class ProductDetailsFragment : Fragment() {
         }
 
         return productDeetBinding.root
+    }
+
+    private fun setWishlistIndicator(user: User) {
+        if (user.wishlist?.contains(productVM.currentProduct.id) == true){
+            val newDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.save_active)
+            productDeetBinding.wishlistIBn.setImageDrawable(newDrawable)
+        }else{
+            val newDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.save_inactive)
+            productDeetBinding.wishlistIBn.setImageDrawable(newDrawable)
+        }
     }
 
     private fun setCurrentIndicators(index: Int) {

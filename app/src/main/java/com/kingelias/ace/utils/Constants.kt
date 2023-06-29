@@ -13,6 +13,8 @@ object Constants {
     const val NODE_PRODUCTS = "product"
     const val NODE_CATEGORY = "category"
     const val NODE_SUBCATEGORY = "subcategory"
+    const val NODE_WISHLIST = "wishlisted"
+    const val NODE_WISHLISTERS = "wishlisters"
     const val NODE_PRODUCT_TYPES = "product_type"
     const val NODE_PRODUCT = "product"
     const val NODE_PRODUCT_IMAGE = "product_image"
