@@ -8,12 +8,29 @@
     tools:context=".fragments.WishlistFragment">
 
     <TextView
+        android:id="@+id/no_resultTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wishlist"
+        android:fontFamily="@font/avenir_book"
+        android:text="@string/no_wishlist"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resultsRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="4"
+        tools:listitem="@layout/product_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

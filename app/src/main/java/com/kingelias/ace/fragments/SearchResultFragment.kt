@@ -81,6 +81,8 @@ class SearchResultFragment : Fragment() {
 
         if(searching){
             searchBinding.searchView.setQuery(searchQuery, true)
+        }else{
+            productVM.performSearchBySubCat(subcategory.name.toString())
         }
 
         return searchBinding.root

@@ -111,6 +111,13 @@ class UserVM: ViewModel() {
                     if (snapshot.exists()){
                         val user = snapshot.getValue(User::class.java)
                         user?.id = snapshot.key
+
+                        val wishlist = mutableListOf<String>()
+                        for (item in snapshot.child("wishlisted").children){
+                            wishlist.add(item.key.toString())
+                        }
+                        user?.wishlist = wishlist
+
                         _user.value = user!!
                         _ready.value = true
                     }

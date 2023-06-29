@@ -16,7 +16,7 @@ data class User(
     var email: String? = "",
     var phone: String? = "",
     val location: String? = "Greater Accra",
-    val wishlist: List<String>? = null,
+    var wishlist: List<String>? = null,
 
     //Business details
     var business_name: String? = null,

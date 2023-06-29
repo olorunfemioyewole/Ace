@@ -169,37 +169,50 @@ class ProductVM: ViewModel() {
     }
 
     fun performSearchBySubCat(query: String) {
-        val searchQuery = query.lowercase()
-
-        // Query the database for matching products by name or type
-        val searchListener = object : ValueEventListener {
+        dbProducts.orderByChild("subcategory").equalTo(query).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val searchResults = mutableListOf<Product>()
+                if (snapshot.exists()){
+                    val productList = mutableListOf<Product>()
 
-                for (productSnapshot in snapshot.children) {
-                    val product = productSnapshot.getValue(Product::class.java)
-                    product?.id = productSnapshot.key
+                    for (productSnapshot in snapshot.children){
+                        val product = productSnapshot.getValue(Product::class.java)
+                        product?.id = productSnapshot.key
 
-                    if (product != null) {
-                        val productName = product.title!!.lowercase()
-                        val productType = product.product_type!!.lowercase()
-                        val productCat = product.category!!.lowercase()
+                        val imageUrls = productSnapshot.child("image").children.mapNotNull { it.getValue(String::class.java) }
+                        product?.imageUrls = imageUrls
 
-                        if (productName.contains(searchQuery) || productType.contains(searchQuery) || productCat.contains(searchQuery)) {
-                            searchResults.add(product)
-                        }
+                        product?.let {productList.add(it)}
+                    }
+
+                    _searchResult.value = productList
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun fetchWishlist(wishlistIds: List<String>) {
+        val productList = mutableListOf<Product>()
+
+        for (id in wishlistIds){
+            dbProducts.child(id).addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val product = snapshot.getValue(Product::class.java)
+                        product?.id = snapshot.key
+
+                        val imageUrls = snapshot.child("image").children.mapNotNull { it.getValue(String::class.java) }
+                        product?.imageUrls = imageUrls
+
+                        productList.add(product!!)
+                        _searchResult.value = productList
                     }
                 }
 
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                _result.value = Exception(error.message)
-            }
+                override fun onCancelled(error: DatabaseError) {}
+            })
         }
 
-        // Start listening for changes in the products node
-        dbProducts.addListenerForSingleValueEvent(searchListener)
     }
 }
