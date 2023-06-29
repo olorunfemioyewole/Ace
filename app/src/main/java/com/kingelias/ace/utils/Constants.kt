@@ -26,21 +26,21 @@ object Constants {
     )
 
     val genders: List<String> = listOf(
-        "Gender",
+        "Gender*",
         "Male",
         "Female",
         "Prefer not to say"
     )
 
     val condition: List<String> = listOf(
-        "Condition",
+        "Condition*",
         "Any",
         "Brand New",
         "Used"
     )
 
     val dealOutcomes: List<String> = listOf(
-        "How did it go?",
+        "How did it go?*",
         "Successful Purchase",
         "The deal failed",
         "Couldn't agree on price",
@@ -54,6 +54,7 @@ object Constants {
     )
 
     val regions: List<String> = listOf(
+        "Location",
         "Greater Accra Region",
         "Central Region",
         "Ashanti Region",

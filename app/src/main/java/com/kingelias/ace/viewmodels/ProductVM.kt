@@ -25,6 +25,8 @@ class ProductVM: ViewModel() {
 
     lateinit var currentProduct: Product
 
+    var boostedPlan: Boolean = false
+
     private var _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>>
         get() = _categories

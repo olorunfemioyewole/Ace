@@ -13,6 +13,7 @@ data class Product(
     var condition: String? = "",
     var price: Float? = 1.0F,
     var negotiable: Boolean = false,
+    var delivery: Boolean = false,
     var exchange_possible: Boolean = false,
     var boosted: Boolean = false,
     var category: String? = "",

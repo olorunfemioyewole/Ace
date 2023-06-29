@@ -12,6 +12,7 @@
     <string name="register">Sign Up</string>
     <string name="already_have_an_account_login">Already have an account? <font color="#FA6400">Login</font></string>
     <string name="phone_number">Phone</string>
+    <string name="phone_number_">Phone*</string>
     <string name="email">Email</string>
     <string name="last_name">Last name</string>
     <string name="or">OR</string>
@@ -51,6 +52,7 @@
     <string name="yes">Yes</string>
     <string name="business_name">Business Name</string>
     <string name="description">Description</string>
+    <string name="description_">Description*</string>
     <string name="address">Address</string>
     <string name="ace_android_app">ACE Android App</string>
     <string name="app_desc">Discover, Sell and Connect on our online market place.\nFind what you need, sell your products, and connect with trusted vendors.</string>
@@ -65,6 +67,7 @@
     <string name="category_1">Category 1</string>
     <string name="categories">Categories</string>
     <string name="category">Category</string>
+    <string name="category_">Category*</string>
     <string name="location">Location</string>
     <string name="back_arrow">back arrow</string>
     <string name="product_image">product image</string>
@@ -72,7 +75,7 @@
     <string name="brand_new">Brand New</string>
     <string name="location_sample">Circle, Greater Accra</string>
     <string name="location_icon">location icon</string>
-    <string name="ghc_200">GHC 200</string>
+    <string name="ghc_20">GHC 20</string>
     <string name="product_name_sample">Logitech G432 Headphones</string>
     <string name="price">Price</string>
     <string name="subcategory">Subcategory</string>
@@ -86,4 +89,16 @@
     <string name="view_Vendor">View Vendor\'s Ads\n</string>
     <string name="their_ads">Their Ads</string>
     <string name="no_rating">No Rating</string>
+    <string name="please_add_at_least_one_photo">Please add at least one photo</string>
+    <string name="title">Title*</string>
+    <string name="negotiable">Negotiable</string>
+    <string name="price_">Price*</string>
+    <string name="delivery">Delivery</string>
+    <string name="name">Name*</string>
+    <string name="boost_plan">Boost Plan</string>
+    <string name="standard_plan">Standard Plan</string>
+    <string name="choose_your_plan">Choose your plan!</string>
+    <string name="post_ad">Post Ad!</string>
+    <string name="free">Free</string>
+    <string name="selected_image">selected image</string>
 </resources>

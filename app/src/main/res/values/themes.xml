@@ -19,6 +19,11 @@
         <item name="errorTextColor">@color/ace_error</item>
         <item name="boxStrokeErrorColor">@color/ace_error</item>
         <item name="errorIconTint">@color/ace_error</item>
+
+        //force light mode
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
     <!--    Splash Screen Theme for Light Mode-->
