@@ -10,10 +10,10 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="15dp"
-        app:cardCornerRadius="15dp"
+        android:layout_marginTop="10dp"
         android:paddingBottom="7dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,8 +37,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginStart="10dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/pfpSIV"
@@ -49,8 +49,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_book"
-                    android:textColor="@color/ace_orange"
                     android:text=""
+                    android:textColor="@color/ace_orange"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
                     app:layout_constraintStart_toEndOf="@+id/pfpSIV"
@@ -61,8 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_black"
-                    android:textColor="@color/black"
                     android:text=""
+                    android:textColor="@color/black"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
                     app:layout_constraintStart_toEndOf="@+id/pfpSIV"
@@ -71,48 +71,65 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
                     <RatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
                         android:id="@+id/ratingBar"
                         style="?android:attr/ratingBarStyleIndicator"
-                        android:scaleX=".6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:max="5"
+                        android:progressTint="@color/ace_orange"
                         android:rating="0"
+                        android:scaleX=".6"
                         android:scaleY=".6"
                         android:transformPivotX="0dp"
-                        android:transformPivotY="0dp"
-                        android:max="5"
-                        android:progressTint="@color/ace_orange" />
+                        android:transformPivotY="0dp" />
+
                     <TextView
                         android:id="@+id/rating_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginTop="3dp"
                         android:fontFamily="@font/avenir_book"
-                        android:textSize="14sp"
                         android:text=""
                         android:textColor="@color/ace_orange"
-                        android:layout_marginStart="120dp"
-                        android:layout_marginTop="3dp"/>
+                        android:textSize="14sp" />
                 </FrameLayout>
 
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/leave_feedBn"
                 style="@style/button_primary"
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/avenir_black"
                 android:text="@string/leave_feedback"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="15dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pfpSIV"
-                android:visibility="gone"/>
+                app:layout_constraintTop_toBottomOf="@+id/pfpSIV" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/no_feedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_feedback"
+        android:fontFamily="@font/avenir_book"
+        android:textSize="15sp"
+        android:textColor="@color/ace_secondary_variant"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/feedbackRV"
@@ -120,9 +137,9 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="7dp"
-        tools:itemCount="4"
-        tools:listitem="@layout/feedback_item"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:itemCount="4"
+        tools:listitem="@layout/feedback_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

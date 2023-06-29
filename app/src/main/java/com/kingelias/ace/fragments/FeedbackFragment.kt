@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -25,7 +26,7 @@ class FeedbackFragment : Fragment() {
     private lateinit var businessName: String
     private lateinit var user: User
 
-    private  val  adapter   = FeedbackAdapter(this@FeedbackFragment)
+    private  val  feedAdapter   = FeedbackAdapter(this@FeedbackFragment)
     private  val feedbackVM by lazy {
         ViewModelProvider(this)[FeedbackVM::class.java]
     }
@@ -42,18 +43,53 @@ class FeedbackFragment : Fragment() {
         val args: FeedbackFragmentArgs by navArgs()
         myFeedback = args.myFeedback
 
-        usersVM.getUser()
-        usersVM.user.observe(viewLifecycleOwner){
-            userDetails = it
-        }
+        if (myFeedback){
+            usersVM.getUser()
+            usersVM.user.observe(viewLifecycleOwner){
+                userDetails = it
+            }
+        }else{
+            user = args.vendor!!
+            userDetails = user
 
-        if(!myFeedback){
+            fullName = userDetails.first_name + userDetails.last_name
             requireActivity().title = "Feedback for $fullName"
         }
 
         val layoutManager = LinearLayoutManager(context)
         feedBinding.feedbackRV.layoutManager = layoutManager
-        feedBinding.feedbackRV.adapter = adapter
+        feedBinding.feedbackRV.adapter = feedAdapter
+
+        if (!myFeedback){
+            feedBinding.leaveFeedBn.visibility = View.VISIBLE
+
+            feedBinding.leaveFeedBn.setOnClickListener {
+                findNavController().navigate(FeedbackFragmentDirections.actionMyFeedbackFragmentToLeaveFeedbackFragment(user.id.toString()))
+            }
+
+            fullName = userDetails.first_name + " " + userDetails.last_name
+            businessName = userDetails.business_name.toString()
+
+            feedbackVM.fetchMyFeedback(userDetails.id!!.toString().trim())
+
+            //inflate header
+            if (userDetails.use_address == true && userDetails.business_name != null){
+                feedBinding.vendorNameTV.text = businessName
+            }else{
+                feedBinding.vendorNameTV.text = fullName
+            }
+
+            if (userDetails.business_type?.isEmpty() == true){
+                feedBinding.vendorNameTV.visibility = View.GONE
+            }else{
+                feedBinding.vendorTypeTV.text = userDetails.business_type
+            }
+
+            Glide.with(this)
+                .load(userDetails.profile_pic)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(feedBinding.pfpSIV)
+        }
 
         usersVM._ready.observe(viewLifecycleOwner){
             if(it) {
@@ -95,7 +131,13 @@ class FeedbackFragment : Fragment() {
             val ratingLabel = "$rating (${feedbackList.size} reviews)"
             feedBinding.ratingLabel.text = ratingLabel
 
-            adapter.setFeedback(feedbackList)
+            if(feedbackList.isEmpty()){
+                feedBinding.noFeedTV.visibility = View.VISIBLE
+                feedBinding.feedbackRV.visibility = View.GONE
+            }else{
+                feedAdapter.setFeedback(feedbackList)
+                feedBinding.noFeedTV.visibility = View.GONE
+            }
         }
 
         return feedBinding.root

@@ -62,7 +62,18 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="cornerRadius">15dp</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/ace_orange</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="button_tertiary_2">
+        <item name="android:layout_height">70dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">15dp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:backgroundTint">@color/white</item>
         <item name="strokeWidth">2dp</item>
         <item name="strokeColor">@color/ace_orange</item>

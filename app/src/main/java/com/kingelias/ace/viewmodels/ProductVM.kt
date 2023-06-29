@@ -51,6 +51,30 @@ class ProductVM: ViewModel() {
     val ready: LiveData<Boolean>
         get() = _ready
 
+    fun fetchMyProducts(userId: String){
+        dbProducts.orderByChild("seller_id").equalTo(userId).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val productList = mutableListOf<Product>()
+
+                    for (productSnapshot in snapshot.children){
+                        val product = productSnapshot.getValue(Product::class.java)
+                        product?.id = productSnapshot.key
+
+                        val imageUrls = productSnapshot.child("image").children.mapNotNull { it.getValue(String::class.java) }
+                        product?.imageUrls = imageUrls
+
+                        product?.let {productList.add(it)}
+                    }
+
+                    _searchResult.value = productList
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
     fun fetchCategories(){
         dbCategories.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

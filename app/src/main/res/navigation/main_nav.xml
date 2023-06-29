@@ -128,7 +128,7 @@
     <fragment
         android:id="@+id/myFeedbackFragment"
         android:name="com.kingelias.ace.fragments.FeedbackFragment"
-        android:label="My Feedback"
+        android:label="Feedback"
         tools:layout="@layout/fragment_my_feedback" >
         <action
             android:id="@+id/action_myFeedbackFragment_to_settingsFragment"
@@ -139,6 +139,16 @@
         <action
             android:id="@+id/action_myFeedbackFragment_to_vendorDetailsFragment"
             app:destination="@id/vendorDetailsFragment" />
+        <action
+            android:id="@+id/action_myFeedbackFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <argument
+            android:name="vendor"
+            app:argType="com.kingelias.ace.data.User"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_myFeedbackFragment_to_leaveFeedbackFragment"
+            app:destination="@id/leaveFeedbackFragment" />
     </fragment>
     <fragment
         android:id="@+id/subcategoryFragment"
@@ -158,7 +168,7 @@
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="com.kingelias.ace.fragments.SearchResultFragment"
-        android:label="fragment_search_result"
+        android:label="Search Results"
         tools:layout="@layout/fragment_search_result" >
         <action
             android:id="@+id/action_searchResultFragment_to_subcategoryFragment"
@@ -197,11 +207,14 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_vendorDetailsFragment"
             app:destination="@id/vendorDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_myFeedbackFragment"
+            app:destination="@id/myFeedbackFragment" />
     </fragment>
-    <fragment
+     <fragment
         android:id="@+id/vendorDetailsFragment"
         android:name="com.kingelias.ace.fragments.VendorDetailsFragment"
-        android:label="fragment_vendor_details"
+        android:label="Vendor Profile"
         tools:layout="@layout/fragment_vendor_details" >
         <action
             android:id="@+id/action_vendorDetailsFragment_to_productDetailsFragment"
@@ -209,5 +222,20 @@
         <action
             android:id="@+id/action_vendorDetailsFragment_to_myFeedbackFragment"
             app:destination="@id/myFeedbackFragment" />
+        <argument
+            android:name="vendor"
+            app:argType="com.kingelias.ace.data.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaveFeedbackFragment"
+        android:name="com.kingelias.ace.fragments.LeaveFeedbackFragment"
+        android:label="Leave Feedback"
+        tools:layout="@layout/fragment_leave_feedback" >
+        <action
+            android:id="@+id/action_leaveFeedbackFragment_to_myFeedbackFragment"
+            app:destination="@id/myFeedbackFragment" />
+        <argument
+            android:name="vendor_id"
+            app:argType="string" />
     </fragment>
 </navigation>

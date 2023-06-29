@@ -74,7 +74,7 @@ class SettingsFragment : Fragment() {
         }
 
         settingsBinding.myFeedbackBN.setOnClickListener {
-            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyFeedbackFragment( true))
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMyFeedbackFragment( true, null))
         }
 
         settingsBinding.aboutUsBn.setOnClickListener {

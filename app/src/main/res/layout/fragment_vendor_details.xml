@@ -1,14 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.VendorDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/vendor_headerCV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/pfpSIV"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/ace_orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/profile_round" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                app:layout_constraintTop_toTopOf="@+id/pfpSIV">
+
+                <TextView
+                    android:id="@+id/vendor_typeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:text=""
+                    android:textColor="@color/ace_orange"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                    app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                    app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+
+                <TextView
+                    android:id="@+id/vendor_nameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_black"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pfpSIV"
+                    app:layout_constraintStart_toEndOf="@+id/pfpSIV"
+                    app:layout_constraintTop_toTopOf="@+id/pfpSIV" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:max="5"
+                        android:progressTint="@color/ace_orange"
+                        android:rating="0"
+                        android:scaleX=".6"
+                        android:scaleY=".6"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="0dp" />
+
+                    <TextView
+                        android:id="@+id/rating_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/avenir_book"
+                        android:text="@string/no_rating"
+                        android:textColor="@color/ace_orange"
+                        android:textSize="14sp" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/addressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:fontFamily="@font/avenir_book"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/pfpSIV"
+                tools:layout_editor_absoluteX="10dp"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressTV">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/view_FeedBn"
+                    style="@style/button_tertiary_2"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/avenir_black"
+                    android:text="@string/view_feedback"
+                    android:textColor="@color/ace_orange" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/call_vendorBn"
+                    style="@style/button_primary"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/avenir_black"
+                    android:text="@string/call_now" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/avenir_black"
+        android:text="@string/their_ads"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/vendor_adsRV"
+        app:layout_constraintTop_toBottomOf="@+id/vendor_headerCV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vendor_adsRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:itemCount="4"
+        tools:listitem="@layout/product_item" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

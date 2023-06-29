@@ -77,9 +77,12 @@
     <string name="price">Price</string>
     <string name="subcategory">Subcategory</string>
     <string name="no_result">No results found, try another prompt</string>
+    <string name="no_feedback">No feedback found for this user</string>
     <string name="add_to_wishlist">Add to wishlist</string>
     <string name="call_now">Call Now</string>
     <string name="lorem_ipsum">After years spent trying to make it as an actress and an advertising professional, Sister Monica Clare realized she was deeply unhappy and had spent her life doing what others had told her to do.</string>
     <string name="view_feedback">View Feedback</string>
     <string name="view_Vendor">View Vendor\'s Ads\n</string>
+    <string name="their_ads">Their Ads</string>
+    <string name="no_rating">No Rating</string>
 </resources>
