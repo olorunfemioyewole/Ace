@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         homeBinding.categoryRV.layoutManager = GridLayoutManager(requireActivity(), 2)
         homeBinding.categoryRV.adapter = categoryAdapter
 
-        productVM.fetchCategories()
+        productVM.fetchHomeCategories()
 
         productVM.categories.observe(viewLifecycleOwner){ categories ->
             categoryAdapter.setCategories(categories)

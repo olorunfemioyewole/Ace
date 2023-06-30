@@ -1,6 +1,5 @@
 package com.kingelias.ace.adapters
 
-import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +10,9 @@ import com.bumptech.glide.Glide
 import com.kingelias.ace.R
 import com.kingelias.ace.fragments.NewAdFragment
 
-class SelectedImageAdapter(
-    private val imageSlide: List<Uri>, private val context: NewAdFragment
+class SelectedImageAdapter(private val context: NewAdFragment
 ) : RecyclerView.Adapter<SelectedImageAdapter.ViewHolder>() {
+    private var imageSlide = mutableListOf<Uri>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -32,7 +31,7 @@ class SelectedImageAdapter(
             .into(holder.slideImage)
 
         holder.itemView.setOnClickListener {
-
+            context.removeSelectedImage(position)
         }
     }
 
@@ -42,7 +41,11 @@ class SelectedImageAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val slideImage: ImageView = itemView.findViewById(R.id.selectionIV)
+    }
 
+    fun setImages(Uris: List<Uri>){
+        this.imageSlide = Uris as MutableList<Uri>
+        notifyDataSetChanged()
     }
 
 }

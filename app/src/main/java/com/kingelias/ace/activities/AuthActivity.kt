@@ -3,61 +3,61 @@ package com.kingelias.ace.activities
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
+import com.kingelias.ace.R
 import com.kingelias.ace.databinding.ActivityAuthBinding
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var authBinding: ActivityAuthBinding
+
+    private lateinit var navController: NavController
+    private lateinit var navHostFragment: NavHostFragment
+    private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authBinding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(authBinding.root)
 
-        /*Firebase.dynamicLinks
-            .getDynamicLink(intent)
-            .addOnSuccessListener(this) { pendingDynamicLinkData: PendingDynamicLinkData? ->
-                // Get deep link from result (may be null if no link is found)
-                var deepLink: Uri? = null
-                if (pendingDynamicLinkData != null) {
-                    deepLink = pendingDynamicLinkData.link
-                }
+        navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.auth_nav_host) as NavHostFragment
+        navController = navHostFragment.navController//Initialising navController
+    }
 
-                // Handle the deep link. For example, open the linked
-                // content, or apply promotional credit to the user's
-                // account.
-                // ...
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        when {
+            //if back button is pressed twice on the dashboard, the app is closed
+            doubleBackToExitPressedOnce && navController.currentDestination!!.id == R.id.loginFragment -> {
+                //delete activity history
+                finishAffinity()
+                //destroy activity. since history is gone, the whole app is closed
+                finish()
+                return
             }
-            .addOnFailureListener(this) { e:Exception -> Log.w("TAG", "getDynamicLink:onFailure", e) }
+            //if the selected menu item is not dashboard, perform normal back action
+            navController.currentDestination!!.id != R.id.loginFragment -> {
+                navController.navigateUp()
+            }
+            //when back button is pressed once, doubleBackToExitPressedOnce is set to true
+            else -> {
+                this.doubleBackToExitPressedOnce = true
+                Toast.makeText(this, "Please tap BACK again to Exit", Toast.LENGTH_SHORT).show()
 
-        val auth = Firebase.auth
-        val intent = intent
-        val emailLink = intent.data.toString()
-
-        // Confirm the link is a sign-in with email link.
-        if (auth.isSignInWithEmailLink(emailLink)) {
-            // Retrieve this from wherever you stored it
-            val email = "someemail@domain.com"
-
-            // The client SDK will parse the code from the link for you.
-            auth.signInWithEmailLink(email, emailLink)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("TAG", "Successfully signed in with email link!")
-                        val result = task.result
-                        // You can access the new user via result.getUser()
-                        // Additional user info profile *not* available via:
-                        // result.getAdditionalUserInfo().getProfile() == null
-                        // You can check if the user is new or existing:
-                        // result.getAdditionalUserInfo().isNewUser()
-                    } else {
-                        Log.e("TAG", "Error signing in with email link", task.exception)
-                    }
-                }
-        }*/
+                //doubleBackToExitPressedOnce is set back to false in 2 seconds
+                Handler(Looper.getMainLooper()).postDelayed({
+                    doubleBackToExitPressedOnce = false
+                }, 2000)
+            }
+        }
     }
 }

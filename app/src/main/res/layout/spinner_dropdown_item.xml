@@ -3,6 +3,7 @@
     android:id="@android:id/text1"
     style="?android:attr/spinnerDropDownItemStyle"
     android:fontFamily="@font/avenir_book"
+    android:textColor="@color/ace_secondary_variant"
     android:singleLine="true"
     android:layout_width="match_parent"
     android:layout_height="45dp"

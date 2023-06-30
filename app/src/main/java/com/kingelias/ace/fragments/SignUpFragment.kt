@@ -143,9 +143,9 @@ class SignUpFragment : Fragment() {
 
         //gender adapter setup
         val genderAdapter = ArrayAdapter(requireActivity(),
-            android.R.layout.simple_spinner_item,
+            R.layout.spinner_item,
             Constants.genders)
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        genderAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         signupBinding.genderSP.adapter = genderAdapter
 
         //handle profile picture button

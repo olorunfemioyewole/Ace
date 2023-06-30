@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity() {
             //when back button is pressed once, doubleBackToExitPressedOnce is set to true
             else -> {
                 this.doubleBackToExitPressedOnce = true
-                Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please tap BACK again to Exit", Toast.LENGTH_SHORT).show()
 
                 //doubleBackToExitPressedOnce is set back to false in 2 seconds
                 Handler(Looper.getMainLooper()).postDelayed({

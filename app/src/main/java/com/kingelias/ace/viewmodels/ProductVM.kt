@@ -1,5 +1,6 @@
 package com.kingelias.ace.viewmodels
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,6 +27,7 @@ class ProductVM: ViewModel() {
     lateinit var currentProduct: Product
 
     var boostedPlan: Boolean = false
+    var selectedImages= mutableListOf<Uri>()
 
     private var _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>>
@@ -83,6 +85,32 @@ class ProductVM: ViewModel() {
                 _ready.value = false
 
                 if (snapshot.exists()){
+                    val categories = mutableListOf(Category("Category*"))
+
+                    for (feedbackSnapshot in snapshot.children){
+                        val category = feedbackSnapshot.getValue(Category::class.java)
+                        category?.name = feedbackSnapshot.key
+
+                        if (category?.name != "Trending"){
+                            category?.let {categories.add(it)}
+                        }
+                    }
+
+                    _categories.value = categories
+                    _ready.value = true
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun fetchHomeCategories(){
+        dbCategories.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                _ready.value = false
+
+                if (snapshot.exists()){
                     val categories = mutableListOf<Category>()
 
                     for (feedbackSnapshot in snapshot.children){
@@ -90,6 +118,7 @@ class ProductVM: ViewModel() {
                         category?.name = feedbackSnapshot.key
 
                         category?.let {categories.add(it)}
+
                     }
 
                     _categories.value = categories
@@ -108,6 +137,38 @@ class ProductVM: ViewModel() {
                     val fashionSubcategories = mutableListOf<Subcategory>()
                     val electronicsSubcategories = mutableListOf<Subcategory>()
                     val phoneSubcategories = mutableListOf<Subcategory>()
+
+                    for (feedbackSnapshot in snapshot.children){
+                        val subcategory = feedbackSnapshot.getValue(Subcategory::class.java)
+                        subcategory?.name = feedbackSnapshot.key
+
+                        if (subcategory != null) {
+                            when(subcategory.category){
+                                "Fashion" -> {fashionSubcategories.add(subcategory)}
+                                "Electronics" -> {electronicsSubcategories.add(subcategory)}
+                                "Phones and Tablets" -> {phoneSubcategories.add(subcategory)}
+                            }
+                        }
+                    }
+
+                    _fashionSubcategories.value = fashionSubcategories
+                    _electronicsSubcategories.value = electronicsSubcategories
+                    _phoneSubcategories.value = phoneSubcategories
+                    _ready.value = true
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun fetchNewAdSubCategories(){
+        dbSubCategories.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val fashionSubcategories = mutableListOf<Subcategory>(Subcategory("Subcategory*"))
+                    val electronicsSubcategories = mutableListOf<Subcategory>(Subcategory("Subcategory*"))
+                    val phoneSubcategories = mutableListOf<Subcategory>(Subcategory("Subcategory*"))
 
                     for (feedbackSnapshot in snapshot.children){
                         val subcategory = feedbackSnapshot.getValue(Subcategory::class.java)

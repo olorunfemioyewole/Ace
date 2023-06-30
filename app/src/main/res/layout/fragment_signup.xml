@@ -121,10 +121,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:paddingVertical="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/last_nameTIL" />
+                app:layout_constraintTop_toBottomOf="@+id/last_nameTIL"
+                android:background="@drawable/custom_spinner_background" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailTIL_"
