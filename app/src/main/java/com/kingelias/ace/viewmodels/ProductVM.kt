@@ -9,13 +9,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.kingelias.ace.data.Category
 import com.kingelias.ace.data.Product
+import com.kingelias.ace.data.ProductType
 import com.kingelias.ace.data.Subcategory
 import com.kingelias.ace.utils.Constants
+import com.kingelias.ace.utils.Constants.NODE_PRODUCT_IMAGE
 
 class ProductVM: ViewModel() {
-
     private val auth = FirebaseAuth.getInstance()
 
     //database nodes
@@ -23,19 +25,19 @@ class ProductVM: ViewModel() {
     private val dbProducts = database.reference.child(Constants.NODE_PRODUCTS)
     private val dbCategories = database.reference.child(Constants.NODE_CATEGORY)
     private val dbSubCategories = database.reference.child(Constants.NODE_SUBCATEGORY)
+    private val dbProductTypes = database.reference.child(Constants.NODE_PRODUCT_TYPES)
 
-    lateinit var currentProduct: Product
-
-    var boostedPlan: Boolean = false
-    var selectedImages= mutableListOf<Uri>()
-
-    private var _categories = MutableLiveData<List<Category>>()
-    val categories: LiveData<List<Category>>
-        get() = _categories
+    //storage nodes
+    private val storage = FirebaseStorage.getInstance()
+    private val cstProductImage = storage.reference.child(Constants.NODE_PRODUCT_IMAGE)
 
     private var _searchResult = MutableLiveData<List<Product>>()
     val searchResult: LiveData<List<Product>>
         get() = _searchResult
+
+    private var _categories = MutableLiveData<List<Category>>()
+    val categories: LiveData<List<Category>>
+        get() = _categories
 
     private var _phoneSubcategories = MutableLiveData<List<Subcategory>>()
     val phoneSubcategories: LiveData<List<Subcategory>>
@@ -47,6 +49,14 @@ class ProductVM: ViewModel() {
     val fashionSubcategories: LiveData<List<Subcategory>>
         get() = _fashionSubcategories
 
+    private var _productTypes = MutableLiveData<List<ProductType>>()
+    val productTypes: LiveData<List<ProductType>>
+        get() = _productTypes
+
+    private val _imgUploadComplete = MutableLiveData<Boolean>()
+    val imgUploadComplete: LiveData<Boolean>
+        get() = _imgUploadComplete
+
     private var _result = MutableLiveData<Exception?>()
     val result: LiveData<Exception?>
         get() = _result
@@ -54,6 +64,18 @@ class ProductVM: ViewModel() {
     val _ready = MutableLiveData<Boolean>()
     val ready: LiveData<Boolean>
         get() = _ready
+
+    lateinit var currentProduct: Product
+
+    var boostedPlan: Boolean = false
+    var selectedImages= mutableListOf<Uri>()
+
+    lateinit var selectedCategory: Category
+    lateinit var selectedSubcategory: String
+    lateinit var selectedSubcatTypes: List<String>
+    lateinit var selectedProductType: String
+    lateinit var newAd: Product
+    lateinit var adToEdit: Product
 
     fun fetchMyProducts(userId: String){
         dbProducts.orderByChild("seller_id").equalTo(userId).addListenerForSingleValueEvent(object: ValueEventListener {
@@ -215,7 +237,9 @@ class ProductVM: ViewModel() {
                             val productCat = product.category!!.lowercase()
 
                             if (productName.contains(searchQuery) || productType.contains(searchQuery) || productCat.contains(searchQuery)) {
-                                searchResults.add(product)
+                                if (product.seller_id != auth.currentUser?.uid.toString()){
+                                    searchResults.add(product)
+                                }
                             }
                         }
                     }
@@ -275,6 +299,63 @@ class ProductVM: ViewModel() {
 
                 override fun onCancelled(error: DatabaseError) {}
             })
+        }
+
+    }
+
+    fun fetchTypes() {
+        dbProductTypes.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val productTypesList = mutableListOf<ProductType>()
+
+                    for (typeSnapshot in snapshot.children){
+                        val productTypes = typeSnapshot.getValue(ProductType::class.java)
+                        productTypes?.id = typeSnapshot.key
+
+                        if (productTypes != null) {
+                            productTypesList.add(productTypes)
+                        }
+                    }
+
+                    _productTypes.value = productTypesList
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun uploadNewAd() {
+        newAd.id = dbProducts.push().key
+
+        dbProducts.child(newAd.id.toString()).setValue(newAd)
+            .addOnSuccessListener {
+                uploadNewAdPictures()
+            }
+            .addOnFailureListener{
+                _result.value = it
+            }
+    }
+
+    private fun uploadNewAdPictures() {
+        for (i in selectedImages.indices){
+            val fileName = "${newAd.id} $i.jpg"
+            val imageRef = cstProductImage.child(newAd.id.toString()).child(fileName)
+            var imageUrl: String
+
+            val uploadTask = imageRef.putFile(selectedImages[i])
+            uploadTask.addOnSuccessListener { taskSnapshot ->
+                taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
+                    imageUrl = uri.toString()
+                    dbProducts.child(newAd.id.toString()).child("image").child(i.toString()).setValue(imageUrl)
+                        .addOnSuccessListener {
+                            _imgUploadComplete.value =  true
+                        }
+                }
+            }.addOnFailureListener {
+                _result.value = it
+            }
         }
 
     }

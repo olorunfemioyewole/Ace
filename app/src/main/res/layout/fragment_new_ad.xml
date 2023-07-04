@@ -151,12 +151,344 @@
                 android:paddingTop="15dp"
                 android:paddingHorizontal="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/typeSP"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/please_add_at_least_one_photo"
-                    android:fontFamily="@font/avenir_book"
-                    android:textSize="15sp"/>
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/brandTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/brand">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/brandET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/modelTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/model">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/modelET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/subtypeSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/configurationSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/output_powerTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/output_power"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/output_powerET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/powerTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/power"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/powerET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/power_demandTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/power_demand"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/power_demandET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/connectivityTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/connectivity"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/connectivityET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/device_interfaceTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/device_interface"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/device_interfaceET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/screen_sizeTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/screen_size"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/screen_sizeET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/resolutionSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/refresh_rateSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/display_techSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/aspect_ratioSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/form_factorSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/polar_patternSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/num_channelSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/amp_typeSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/connector1SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/connector2SP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/key_switchesSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cable_lengthTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/cable_length"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/cable_lengthET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/osSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <Spinner
+                    android:id="@+id/cable_typeSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingVertical="17dp"
+                    android:paddingHorizontal="8dp"
+                    android:background="@drawable/custom_spinner_background"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/colorTIL"
+                    style="@style/outlined_til"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="@string/color"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/colorET"
+                        style="@style/outlined_tiet2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_book"
+                        android:inputType="textLongMessage" />
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
 
@@ -236,6 +568,28 @@
 
                 </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical"
+                android:layout_marginTop="3dp">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/exchangeCB"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:buttonTint="@color/ace_orange"/>
+
+                <TextView
+                    android:id="@+id/exchangeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/avenir_book"
+                    android:text="@string/exchange"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
             </LinearLayout>
 
 
@@ -288,7 +642,7 @@
                     android:hint="@string/phone_number_">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phone"
+                        android:id="@+id/phoneET"
                         style="@style/outlined_tiet2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

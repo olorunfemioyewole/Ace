@@ -101,4 +101,17 @@
     <string name="post_ad">Post Ad!</string>
     <string name="free">Free</string>
     <string name="selected_image">selected image</string>
+    <string name="type">Type*</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="configuration">Configuration*</string>
+    <string name="output_power">Output Power (Watts)*</string>
+    <string name="power">Power (Watts)</string>
+    <string name="power_demand">Power Demand (Watts)*</string>
+    <string name="device_interface">Device Interface</string>
+    <string name="connectivity">Connectivity</string>
+    <string name="cable_length">Cable Length</string>
+    <string name="color">Color</string>
+    <string name="screen_size">Screen Size (inches)</string>
+    <string name="exchange">Exchange Available</string>
 </resources>

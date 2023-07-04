@@ -25,10 +25,11 @@ data class Product(
     var date_posted: String? = "",
     var location: String? = "Greater Accra",
     var wishlisted_by: List<String>? = null,
+    var active: Boolean = true,
 
     //specifications\\
     var brand: String? = null,
-    var model: String? = null,// types: hard drives, UPSs, graphic cards, memory, computer cases, motherboards, network cards
+    var model: String? = null,
 
     //sound systems
     var system_configuration: String? = null, //5.0, 7.1 etc | other types: speakers, amplifiers, HiFi Systems, studio monitors,
