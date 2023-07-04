@@ -25,6 +25,7 @@
     <string name="profile_picture">Profile picture</string>
     <string name="ok">Ok</string>
     <string name="err_msg_field">Please, fill this field to continue</string>
+    <string name="err_desc_field">Please, let us know a bit more about the outcome</string>
     <string name="err_msg_email">Please, enter your email to continue</string>
     <string name="err_msg_invalid_email">Invalid Email</string>
     <string name="err_msg_pass">Please, enter a password to continue</string>
@@ -114,4 +115,7 @@
     <string name="color">Color</string>
     <string name="screen_size">Screen Size (inches)</string>
     <string name="exchange">Exchange Available</string>
+    <string name="leave_your_feedback">Leave your Feedback</string>
+    <string name="choose_a_rating">Choose a rating</string>
+    <string name="send_feedback">Send Feedback</string>
 </resources>

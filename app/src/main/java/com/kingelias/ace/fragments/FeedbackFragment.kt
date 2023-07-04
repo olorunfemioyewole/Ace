@@ -49,6 +49,7 @@ class FeedbackFragment : Fragment() {
                 userDetails = it
             }
         }else{
+            usersVM.getUser()
             user = args.vendor!!
             userDetails = user
 
@@ -64,7 +65,7 @@ class FeedbackFragment : Fragment() {
             feedBinding.leaveFeedBn.visibility = View.VISIBLE
 
             feedBinding.leaveFeedBn.setOnClickListener {
-                findNavController().navigate(FeedbackFragmentDirections.actionMyFeedbackFragmentToLeaveFeedbackFragment(user.id.toString()))
+                findNavController().navigate(FeedbackFragmentDirections.actionMyFeedbackFragmentToLeaveFeedbackFragment(user.id.toString(), usersVM.user.value!!))
             }
 
             fullName = userDetails.first_name + " " + userDetails.last_name

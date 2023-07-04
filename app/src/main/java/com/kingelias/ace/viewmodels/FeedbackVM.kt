@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kingelias.ace.data.Feedback
+import com.kingelias.ace.data.User
 import com.kingelias.ace.utils.Constants
 
 class FeedbackVM: ViewModel() {
@@ -17,6 +18,14 @@ class FeedbackVM: ViewModel() {
     //database nodes
     private val database = FirebaseDatabase.getInstance()
     private val dbFeedback = database.reference.child(Constants.NODE_FEEDBACK)
+
+    lateinit var newFeedback: Feedback
+    lateinit var sender: User
+    lateinit var receipient: String
+
+    private val _feedbackSent = MutableLiveData<Boolean>()
+    val feedbackSent: LiveData<Boolean>
+        get() = _feedbackSent
 
     private val _feedback = MutableLiveData<List<Feedback>>()
     val feedback: LiveData<List<Feedback>>
@@ -45,5 +54,14 @@ class FeedbackVM: ViewModel() {
 
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    fun sendFeedback() {
+        newFeedback.id = dbFeedback.push().key
+
+        dbFeedback.child(newFeedback.id.toString()).setValue(newFeedback)
+            .addOnSuccessListener {
+                _feedbackSent.value = true
+            }
     }
 }

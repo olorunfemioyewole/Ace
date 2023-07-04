@@ -225,7 +225,7 @@
         <argument
             android:name="vendor"
             app:argType="com.kingelias.ace.data.User" />
-    </fragment>
+     </fragment>
     <fragment
         android:id="@+id/leaveFeedbackFragment"
         android:name="com.kingelias.ace.fragments.LeaveFeedbackFragment"
@@ -237,5 +237,8 @@
         <argument
             android:name="vendor_id"
             app:argType="string" />
+        <argument
+            android:name="user"
+            app:argType="com.kingelias.ace.data.User" />
     </fragment>
 </navigation>
