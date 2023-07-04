@@ -8,5 +8,8 @@ This App is built with Kotlin and Firebase to allow users
 * Effortlessly find exactly what they're looking for
 * Save their favorite items for later
 
+# Try it out Here (.apk)
+https://drive.google.com/file/d/1l451gKRiXiZyVG__RL0rZlI8SNR1lexx/view?usp=sharing
+
 # UI Prototype
 https://www.figma.com/proto/8tFPiwN40qv7QWTJcHXZhj/Application-UI?page-id=0%3A1&type=design&node-id=113-2130&viewport=904%2C434%2C0.91&scaling=scale-down
