@@ -81,10 +81,12 @@ class UserVM: ViewModel() {
                 dbUsers.child(userID).child(NODE_PROFILE_PIC).setValue(imageUrl)
                     .addOnSuccessListener {
                         _imgUploadComplete.value =  true
+                        _ready.value = true
                     }
             }
         }.addOnFailureListener {
             _result.value = it
+
         }
 
     }
@@ -102,7 +104,7 @@ class UserVM: ViewModel() {
     fun updateUserField(userID: String, fieldName: String, value: Any) {
         dbUsers.child(userID).child(fieldName).setValue(value)
             .addOnSuccessListener {
-                _result.value = null
+                _ready.value = true
             }
             .addOnFailureListener{
                 _result.value = it

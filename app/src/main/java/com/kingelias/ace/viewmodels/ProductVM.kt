@@ -79,6 +79,7 @@ class ProductVM: ViewModel() {
         get() = _ready
 
     lateinit var currentProduct: Product
+    var editProduct: Boolean = false
 
     var boostedPlan: Boolean = false
     var selectedImages= mutableListOf<Uri>()

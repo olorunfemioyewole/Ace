@@ -25,6 +25,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -75,6 +76,9 @@ class NewAdFragment : Fragment() {
     private lateinit var dialog: Dialog
     private lateinit var upDialog: ProgressDialog
 
+    private lateinit var product: Product
+    private var editAd: Boolean = false
+
     private val productVM by lazy {
         ViewModelProvider(this)[ProductVM::class.java]
     }
@@ -104,16 +108,28 @@ class NewAdFragment : Fragment() {
     private lateinit var resolutionAdapter:ArrayAdapter<String>
     private lateinit var refreshRateAdapter:ArrayAdapter<String>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val args: NewAdFragmentArgs by navArgs()
+
+        if (args.product != null) {
+            product = args.product!!
+        }
+        editAd = args.editAd
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         newAdBinding = FragmentNewAdBinding.inflate(inflater, container, false)
 
-//        if (productVM.currentProduct != null){
-//            inflateProductDraft(productVM.currentProduct)
-//        }
-
+        productVM.editProduct = editAd
+        if (productVM.editProduct){
+            productVM.currentProduct = product
+            inflateProductDraft(productVM.currentProduct)
+        }
 
         upDialog = ProgressDialog(requireContext())
         upDialog.setTitle("Uploading your Ad")
@@ -251,6 +267,10 @@ class NewAdFragment : Fragment() {
         }
 
         return newAdBinding.root
+    }
+
+    private fun inflateProductDraft(currentProduct: Product) {
+
     }
 
     private fun validateData() {
