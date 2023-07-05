@@ -87,6 +87,24 @@ class SettingsFragment : Fragment() {
             sendPasswordResetEmail(user?.email.toString().trim())
         }
 
+        settingsBinding.changeEmailBn.setOnClickListener{
+            AlertDialog.Builder(requireActivity()).also{
+                it.setTitle("Sorry :(")
+                it.setMessage("This feature is currently unavailable")
+                it.setPositiveButton(getString(R.string.ok)){ _, _ ->
+                }
+            }.create().show()
+        }
+
+        settingsBinding.giveFeedbackBn.setOnClickListener{
+            AlertDialog.Builder(requireActivity()).also{
+                it.setTitle("Sorry :(")
+                it.setMessage("This feature is currently unavailable")
+                it.setPositiveButton(getString(R.string.ok)){ _, _ ->
+                }
+            }.create().show()
+        }
+
         //handling deleting user account
         settingsBinding.deleteAccountBn.setOnClickListener{
             AlertDialog.Builder(requireActivity()).also{
