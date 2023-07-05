@@ -48,7 +48,7 @@ class VendorDetailsFragment : Fragment() {
 
         feedbackVM.fetchMyFeedback(vendor.id.toString())
         inflateHeader(vendor)
-        productVM.fetchMyProducts(vendor.id.toString())
+        productVM.fetchVendorProducts(vendor.id.toString())
 
         vendorBinding.vendorAdsRV.layoutManager = LinearLayoutManager(requireActivity())
         vendorBinding.vendorAdsRV.adapter = productAdapter

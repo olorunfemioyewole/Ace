@@ -82,6 +82,7 @@
     <string name="subcategory">Subcategory</string>
     <string name="no_result">No results found, try another prompt</string>
     <string name="no_feedback">No feedback found for this user</string>
+    <string name="no_ads">No Ads to show</string>
     <string name="no_wishlist">No items in your wishlist. Keep Browsing</string>
     <string name="add_to_wishlist">Add to wishlist</string>
     <string name="call_now">Call Now</string>
@@ -118,4 +119,10 @@
     <string name="leave_your_feedback">Leave your Feedback</string>
     <string name="choose_a_rating">Choose a rating</string>
     <string name="send_feedback">Send Feedback</string>
+    <string name="active">Active</string>
+    <string name="_0">0</string>
+    <string name="pending">Pending</string>
+    <string name="drafts">Drafts</string>
+    <string name="declined">Declined</string>
+    <string name="close_ad">Close Ad</string>
 </resources>

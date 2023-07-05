@@ -25,7 +25,7 @@ data class Product(
     var date_posted: String? = "",
     var location: String? = "Greater Accra",
     var wishlisted_by: List<String>? = null,
-    var active: Boolean = true,
+    var status: String? = "Active",
 
     //specifications\\
     var brand: String? = null,
@@ -206,6 +206,7 @@ data class Product(
         if (condition != other.condition) return false
         if (price != other.price) return false
         if (negotiable != other.negotiable) return false
+        if (delivery != other.delivery) return false
         if (exchange_possible != other.exchange_possible) return false
         if (boosted != other.boosted) return false
         if (category != other.category) return false
@@ -217,6 +218,7 @@ data class Product(
         if (date_posted != other.date_posted) return false
         if (location != other.location) return false
         if (wishlisted_by != other.wishlisted_by) return false
+        if (status != other.status) return false
         if (brand != other.brand) return false
         if (model != other.model) return false
         if (system_configuration != other.system_configuration) return false
@@ -319,6 +321,7 @@ data class Product(
         result = 31 * result + (condition?.hashCode() ?: 0)
         result = 31 * result + (price?.hashCode() ?: 0)
         result = 31 * result + negotiable.hashCode()
+        result = 31 * result + delivery.hashCode()
         result = 31 * result + exchange_possible.hashCode()
         result = 31 * result + boosted.hashCode()
         result = 31 * result + (category?.hashCode() ?: 0)
@@ -330,6 +333,7 @@ data class Product(
         result = 31 * result + (date_posted?.hashCode() ?: 0)
         result = 31 * result + (location?.hashCode() ?: 0)
         result = 31 * result + (wishlisted_by?.hashCode() ?: 0)
+        result = 31 * result + (status?.hashCode() ?: 0)
         result = 31 * result + (brand?.hashCode() ?: 0)
         result = 31 * result + (model?.hashCode() ?: 0)
         result = 31 * result + (system_configuration?.hashCode() ?: 0)

@@ -64,6 +64,15 @@
         <action
             android:id="@+id/action_newAdFragment_to_myAdsFragment"
             app:destination="@id/myAdsFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.kingelias.ace.data.Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="editAd"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

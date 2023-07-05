@@ -83,6 +83,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/priceTV" />
 
             <LinearLayout
+                android:id="@+id/locLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -109,6 +110,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/priceTV" />
             </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/closeBn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_black"
+                android:text="@string/close_ad"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:cornerRadius="15dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

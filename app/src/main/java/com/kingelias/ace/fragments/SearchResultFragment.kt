@@ -75,6 +75,8 @@ class SearchResultFragment : Fragment() {
                 searchBinding.noResultTV.visibility = View.VISIBLE
                 searchBinding.resultsRV.visibility = View.GONE
             }else{
+                searchBinding.resultsRV.visibility = View.VISIBLE
+                searchBinding.noResultTV.visibility = View.GONE
                 productAdapter.setProducts(it)
             }
         }

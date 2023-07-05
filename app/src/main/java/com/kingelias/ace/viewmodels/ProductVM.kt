@@ -15,7 +15,7 @@ import com.kingelias.ace.data.Product
 import com.kingelias.ace.data.ProductType
 import com.kingelias.ace.data.Subcategory
 import com.kingelias.ace.utils.Constants
-import com.kingelias.ace.utils.Constants.NODE_PRODUCT_IMAGE
+import java.nio.file.Files.delete
 
 class ProductVM: ViewModel() {
     private val auth = FirebaseAuth.getInstance()
@@ -34,6 +34,19 @@ class ProductVM: ViewModel() {
     private var _searchResult = MutableLiveData<List<Product>>()
     val searchResult: LiveData<List<Product>>
         get() = _searchResult
+
+    private var _activeAds = MutableLiveData<List<Product>>()
+    val activeAds: LiveData<List<Product>>
+        get() = _activeAds
+    private var _pendingAds = MutableLiveData<List<Product>>()
+    val pendingAds: LiveData<List<Product>>
+        get() = _pendingAds
+    private var _declinedAds = MutableLiveData<List<Product>>()
+    val declinedAds: LiveData<List<Product>>
+        get() = _declinedAds
+    private var _draftAds = MutableLiveData<List<Product>>()
+    val draftAds: LiveData<List<Product>>
+        get() = _draftAds
 
     private var _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>>
@@ -77,7 +90,7 @@ class ProductVM: ViewModel() {
     lateinit var newAd: Product
     lateinit var adToEdit: Product
 
-    fun fetchMyProducts(userId: String){
+    fun fetchVendorProducts(userId: String){
         dbProducts.orderByChild("seller_id").equalTo(userId).addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
@@ -231,7 +244,7 @@ class ProductVM: ViewModel() {
                         product?.imageUrls = imageUrls
 
 
-                        if (product != null) {
+                        if (product != null && product.status == "Active") {
                             val productName = product.title!!.lowercase()
                             val productType = product.product_type!!.lowercase()
                             val productCat = product.category!!.lowercase()
@@ -268,10 +281,52 @@ class ProductVM: ViewModel() {
                         val imageUrls = productSnapshot.child("image").children.mapNotNull { it.getValue(String::class.java) }
                         product?.imageUrls = imageUrls
 
-                        product?.let {productList.add(it)}
+                        if (product != null && product.status == "Active") {
+                            productList.add(product)
+                        }
                     }
 
                     _searchResult.value = productList
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    fun fetchMyAds() {
+        val userId = auth.currentUser?.uid
+
+        dbProducts.orderByChild("seller_id").equalTo(userId).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    val activeProductList = mutableListOf<Product>()
+                    val pendingProductList = mutableListOf<Product>()
+                    val declinedProductList = mutableListOf<Product>()
+                    val draftProductList = mutableListOf<Product>()
+
+                    for (productSnapshot in snapshot.children){
+                        val product = productSnapshot.getValue(Product::class.java)
+                        product?.id = productSnapshot.key
+
+                        val imageUrls = productSnapshot.child("image").children.mapNotNull { it.getValue(String::class.java) }
+                        product?.imageUrls = imageUrls
+
+                        if (product != null && product.status == "Active") {
+                            activeProductList.add(product)
+                        } else if (product != null && product.status == "Pending") {
+                            pendingProductList.add(product)
+                        } else if (product != null && product.status == "Declined") {
+                            declinedProductList.add(product)
+                        } else if (product != null && product.status == "Drafts") {
+                            draftProductList.add(product)
+                        }
+                    }
+
+                    _activeAds.value = activeProductList
+                    _pendingAds.value = pendingProductList
+                    _declinedAds.value = declinedProductList
+                    _draftAds.value = draftProductList
                 }
             }
 
@@ -338,6 +393,33 @@ class ProductVM: ViewModel() {
             }
     }
 
+    fun deleteAd(id: String) {
+        dbProducts.child(id).setValue(null)
+            .addOnSuccessListener {
+                deleteAdPictures(id)
+                _imgUploadComplete.value = true
+            }
+            .addOnFailureListener{
+                _result.value = it
+            }
+    }
+
+    private fun deleteAdPictures(id: String) {
+        val productFolderRef = cstProductImage.child(id)
+        productFolderRef.listAll().addOnSuccessListener { result ->
+            for (fileRef in result.items) {
+                fileRef.delete()
+            }
+            productFolderRef.delete().addOnSuccessListener {
+                _imgUploadComplete.value = true
+            }.addOnFailureListener { exception ->
+                _result.value = exception
+            }
+        }.addOnFailureListener { exception ->
+            _result.value = exception
+        }
+    }
+
     private fun uploadNewAdPictures() {
         for (i in selectedImages.indices){
             val fileName = "${newAd.id} $i.jpg"
@@ -359,4 +441,5 @@ class ProductVM: ViewModel() {
         }
 
     }
+
 }
