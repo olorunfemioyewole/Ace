@@ -1,6 +1,5 @@
 package com.kingelias.ace.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kingelias.ace.R
 import com.kingelias.ace.data.Product
-import com.kingelias.ace.fragments.SearchResultFragment
 import com.kingelias.ace.fragments.VendorDetailsFragment
 
 class VendorProductAdapter(private  val context: VendorDetailsFragment)
