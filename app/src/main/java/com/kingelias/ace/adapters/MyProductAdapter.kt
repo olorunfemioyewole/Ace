@@ -44,7 +44,7 @@ class MyProductAdapter(private  val context: MyAdsFragment)
         holder.location.text = product.location
 
         Glide.with(context)
-            .load(product.imageUrls?.get(0))
+            .load(product.imageUrls?.getOrNull(0) ?: "")
             .placeholder(R.drawable.ic_launcher_background)
             .into(holder.image)
 
